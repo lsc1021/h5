@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/min.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/yanjiangji.css">
+    <script src="jquery.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" style="position:absolute;">
+        <!--<div>
+            <input id="putSe" style="display:block" type="text" name="" value="">
+            <img id="seImg" src="http://yixi.tv/images/search.png" alt="">
+        </div>-->
+
+        <a href="index.html">
+            <div>首页</div>
+        </a>
+        <a href="zhuangtiji.html">
+            <div>专题集</div>
+        </a>
+        <a href="yanjiangji.html">
+            <div>演讲集</div>
+        </a>
+        <a href="">
+            <div>活动</div>
+        </a>
+        <a href="jilu.html">
+            <div>纪录</div>
+        </a>
+        <a href="">
+            <div>礼物</div>
+        </a>
+        <a href="guanyu.html">
+            <div>关于</div>
+        </a>
+
+    </div>
+    <div id="content-box">
+
+        <div class="navBg">
+            <div class="navbar-header ">
+                <button type="button" id="btnNav" class="visible-xs-block navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+                <!--显示在页面的logo-->
+                <a href="" class="logo"></a>
+
+            </div>
+            <div id="mainNav" class="hidden-xs">
+                <ul>
+                    <a href="index.html">
+                        <li>首页</li>
+                    </a>
+                    <a href="zhuangtiji.html">
+                        <li>专题集</li>
+                    </a>
+                    <a href="yanjinagji.html">
+                        <li>演讲集</li>
+                    </a>
+                    <a href="">
+                        <li>活动</li>
+                    </a>
+                    <a href="jilu.html">
+                        <li>纪录</li>
+                    </a>
+                    <a href="">
+                        <li>礼物</li>
+                    </a>
+                    <a href="guanyu.html">
+                        <li>关于</li>
+                    </a>
+                    <!--<li>
+                        <input id="putSe" type="text" name="" value="">
+                        <img id="seImg" src="http://yixi.tv/images/search.png" alt="">
+                    </li>-->
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="container-fluid boxImg">
+
+        </div>
+        <section class="sbw1240 pdt40 cutline" style="margin-top:-150px;background:white;">
+            <h3>演讲集</h3>
+            <div class=" listChangesBox ">
+                <ul>
+                    <li class="listAll active ">
+                        <a href="yanjiangji.html">全部</a>
+                    </li>
+                    <li class="listTime ">
+                        <a>类别I</a>
+                        <div class="listbox">
+                            <div>文艺</div>
+                            <div>家园</div>
+                            <div>观察</div>
+                            <div>行当</div>
+                            <div>科技</div>
+                            <div>商业</div>
+                        </div>
+                    </li>
+                    <li class="listClass ">
+                        <a>类别II</a>
+                        <div class="listbox">
+                            <div>创意</div>
+                            <div>态度</div>
+                            <div>年会</div>
+                            <div>礼物</div>
+                            <div>树桠</div>
+                            <div>公益</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="container ">
+            <div class="baseVideoList ">
+                <!--<li></li>-->
+            </div>
+        </div>
+        <!--<div class="more">
+            加载更多
+        </div>
+        <p class="none">
+            已经没有更多了
+        </p>-->
+
+    </div>
+    <div class="footer ">
+        <div class="footerBox ">
+            <div class="baseFootBox newCommom "><span class="title ">最新评论</span>
+                <div class="footCutLine "></div>
+                <ul class="newCommonList ">
+                    <li class="clearfix ">
+                        <div class="headBox ">
+                            <div class="head "><img src="http://static.yixi.tv/portrait/2017-03-09/92d5fdd3f162bcf65db5777a571e05b7.160x160.jpg "></div>
+                        </div>
+                        <div class="wordBox ">
+                            <span class="name ">Vioking</span>
+                            <span class="common ">无人机会干扰民航客运的正常飞行吗？</span>
+                        </div>
+                    </li>
+                    <li class="clearfix ">
+                        <div class="headBox ">
+                            <div class="head "><img src="http://yixi.tv/images/head_black90@2x.png "></div>
+                        </div>
+                        <div class="wordBox ">
+                            <span class="name ">664540407@QQ.COM</span>
+                            <span class="common ">听不了</span>
+                        </div>
+                    </li>
+                    <li class="clearfix ">
+                        <div class="headBox ">
+                            <div class="head "><img src="http://yixi.tv/images/head_black90@2x.png "></div>
+                        </div>
+                        <div class="wordBox ">
+                            <span class="name ">468726453@qq.com</span>
+                            <span class="common ">为什么播不了</span>
+                        </div>
+                    </li>
+                    <li class="clearfix ">
+                        <div class="headBox ">
+                            <div class="head "><img src="http://yixi.tv/images/head_black90@2x.png "></div>
+                        </div>
+                        <div class="wordBox ">
+                            <span class="name ">594a57dd581b0</span>
+                            <span class="common ">为什么播不了</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="baseFootBox contact "><span class="title ">一席@关联</span>
+                <div class="footCutLine "></div>
+                <ul class="baseFootList ">
+                    <li>一席@优酷</li>
+                    <li>一席@微博</li>
+                    <li>一席@豆瓣</li>
+                    <li>一席@Facebook</li>
+                    <li class="footWeixin ">一席@微信
+                        <div>请在微信中搜索公众号<span>yixiclub</span>关注我们。<br>谢谢。</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="baseFootBox QA "><span class="title ">支持</span>
+                <div class="footCutLine "></div>
+                <ul class="baseFootList ">
+                    <li>常见问题></li>
+                    <li>活动时间表</li>
+                    <li>用户反馈</li>
+                </ul>
+            </div>
+            <div class="baseFootBox downloadApp "><span class="title ">app</span>
+                <div class="footCutLine "></div>
+                <div class="coedDownloadBox ">
+                    <div class="comingCover " style="bottom: -100%; "></div>
+                    <div class="iosHead ">for&nbsp;iOS</div>
+                    <div class="bitMapBox "><img src="http://yixi.tv/images/Bitmap_ios.png "></div>
+                    <a href=" " class="itunesDownloadButton " target="_blank "></a>
+                </div>
+                <div class="coedDownloadBox ml10 ">
+                    <div class="comingCover "></div>
+                    <div class="androidHead ">for&nbsp;Android</div>
+                    <div class="bitMapBox "><img src="http://yixi.tv/images/bitmap_android.png "></div>
+                    <a href="# " class="androidDownloadButton "></a>
+                </div>
+            </div>
+            <div class="clear "></div>
+        </div>
+    </div>
+    <!--导航min-->
+
+</body>
+
+<script>
+    $('#seImg').click(function() {
+        $('#putSe').show();
+    })
+    $('document').click(function() {
+        $('#putSe').hide();
+    })
+    var flag = true;
+    $('#btnNav').click(function() {
+        if (flag == false) {
+            flag = true;
+            $('#content-box').animate({
+                'right': '50%'
+            })
+            $('.box').eq(0).css({
+                'position': 'fixed',
+                'top': 0,
+            })
+
+
+        } else {
+            flag = false;
+            $('#content-box').animate({
+                'right': '0'
+            })
+            $('.box').eq(0).css({
+                'position': '',
+
+            })
+
+        }
+
+    })
+    $.ajax({
+        url: 'js/yixi.fenlei.php',
+        type: 'get',
+        success: function(data) {
+            data = JSON.parse(data)
+            console.log(data);
+            var location = window.location.href;
+            var listid = location.split('?')[1];
+            console.log(listid)
+            fenlei(listid)
+            $.each($('.listbox').eq(0).children('div'), function(i) {
+                $('.listbox').eq(0).children('div').eq(i).click(function() {
+                    $('.baseVideoList').html('');
+                    var list = data.data[i].id;
+                    // console.log(list)
+                    fenlei(list)
+                })
+
+            })
+            $.each($('.listbox').eq(1).children('div'), function(i) {
+                    $('.listbox').eq(1).children('div').eq(i).click(function() {
+                        $('.baseVideoList').html('');
+                        var list = data.data[6 + i].id;
+                        // console.log(list)
+                        fenlei(list)
+                    })
+
+                })
+                // var num = 12;
+
+            function fenlei(list) {
+                $.ajax({
+                    url: 'js/yixi.fenleiye.php',
+                    data: {
+                        flid: list
+                    },
+                    type: 'get',
+                    success: function(data) {
+                        data = JSON.parse(data)
+                        console.log(data)
+                            // $('.more').eq(0).click(function() {
+                            //     $('.baseVideoList').html('');
+                            //     num += 12;
+                            //     add(num);
+
+                        //     if (num >= data.data.length) {
+                        //         alert('没有更多了')
+                        //     }
+                        // })
+                        add(data.data.length)
+
+                        function add(num) {
+
+                            for (var i = 0; i < num; i++) {
+                                var dom =
+                                    // '<a href = "video.html?' + i + '">' +
+                                    '<li>' +
+                                    '<div class="baseVideoBox ">' +
+                                    '<div class="videoContent " style="background:url( ' + data.data[i].lectures_with_cover[0].cover + ');background-position: center center;background-size: cover; "> ' +
+                                    '<div class="videoCover ">' +
+                                    '<a>' +
+                                    '<div class="videoHeadBox ">' +
+                                    '<div class="baseHeadContent videopos ">' +
+                                    '<img src=' + data.data[i].pic + '>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<span class="name ">' + data.data[i].nickname + '</span> <span class="speakersDescription ">' + data.data[i].desc + '</span>' +
+                                    '<div class="playInfoList ">' +
+                                    '<span class="playTime ">' +
+                                    '<i class="fa fa-play-circle " aria-hidden="true ">' + data.data[i].id + '</i>' +
+                                    '</span>' +
+                                    '<span class="liked ">' +
+                                    '<i class="fa fa-gratipay " aria-hidden="true ">99</i>' +
+                                    '</span>' +
+                                    '<span class="comment ">' +
+                                    '<i class="fa fa-commenting " aria-hidden="true ">199</i>' +
+                                    '</span>' +
+                                    '</div>' +
+                                    '</a>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '<span class="videoTitle ">' + data.data[i].lectures_with_cover[0].title + '</span>' +
+                                    '</div>' +
+                                    '</li>'
+                                    // '</a>';
+
+                                $('.baseVideoList').append(dom);
+                                // dom[i].click(function() {
+                                //     window.open('video.html?' + i)
+                                // })
+                            }
+                            $.each($('.baseVideoList').eq(0).children('li'), function(i) {
+                                // console.log($('.baseVideoList').eq(0).children('li').eq(i))
+                                $('.baseVideoList').eq(0).children('li').eq(i).click(function() {
+                                    // console.log(data.data[i].lectures_with_cover[0].id)
+                                    window.location.href = 'fenlei.video.html';
+                                    localStorage.usid = data.data[i].lectures_with_cover[0].id;
+                                })
+                            })
+
+                        }
+                        // var aa = false;
+
+                        // function res() {
+                        //     //start  判断屏幕尺寸
+
+                        //     var wid = $(window).width();
+                        //     console.log(wid);
+                        //     if (wid <= 768) {
+                        //         console.log("移动");
+                        //         $(window).scroll(function() {
+                        //             console.log("这是移动端");
+                        //             var foot = $(window).scrollTop() >= $(document).height() - $(window).height() - 100;
+                        //             console.log(foot);
+                        //             if (foot && wid <= 768) {
+                        //                 $('.baseVideoList').html('');
+                        //                 num += 12;
+                        //                 if (num >= data.data.length) {
+                        //                     $('.none').eq(0).show();
+                        //                 }
+                        //                 add(num);
+                        //             }
+                        //         });
+                        //     } else {
+                        //         aa = true;
+                        //         console.log("pc");
+                        //     }
+                        // }
+                        // //end  判断屏幕尺寸
+                        // window.onresize = function() {
+                        //     res();
+                        //     if (aa == true) {
+                        //         window.location.reload();
+                        //         aa = false;
+                        //     }
+                        // }
+                        // res();
+
+
+                    }
+                })
+            }
+
+
+
+        }
+    })
+</script>
+
+</html>

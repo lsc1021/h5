@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /*媒体查询类型*/
+    @media only tv {
+            .box {
+                background: red;
+            }
+    }
+    @media only tv{
+    .box{
+        background:red;
+             }
+    }  
+     @media only tv{
+    .box{
+        background:red;
+             }
+    }    
+     @media only tv{
+    .box{
+        background:red;
+             }
+    }    
+    /*查询所有媒体，以屏幕大小区分  */
+    @media all and (min-width:100px) and (max-width:200px){
+        .box{background: red;
+        }
+    }
+     @media all and (min-width:100px) and (max-width:200px){
+        .box{background: red;
+        }
+    }
+     @media all and (min-width:100px) and (max-width:200px){
+        .box{background: red;
+        }
+    }
+     @media all and (min-width:100px) and (max-width:200px){
+        .box{background: red;
+        }
+    }
+    /*识别竖屏*/
+    @media screen and (orientation:portrait){
+        .box{background: red;}
+    }
+    @media screen and (orientation:portrait){
+        .box{background: red;}
+    }
+     @media screen and (orientation:portrait){
+        .box{background: red;}
+    }
+     @media screen and (orientation:portrait){
+        .box{background: red;}
+    }
+    /*识别横屏*/
+    @media screen and (orientation:landscape){
+        .box{background: yellow;}
+    }
+     @media screen and (orientation:landscape){
+        .box{background: yellow;}
+    }
+     @media screen and (orientation:landscape){
+        .box{background: yellow;}
+    }
+     @media screen and (orientation:landscape){
+        .box{background: yellow;}
+    }
+    /*最小宽度和最大宽度*/
+    .box{min-width: 100px;max-width: 200px;}
+    .box{min-width: 100px;max-width: 200px;}
+    .box{min-width: 100px;max-width: 200px;}
+    .box{min-width: 100px;max-width: 200px;}
+   
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    // 获取div的宽度
+    var width=getComputedStyle(box)["width"];
+    var width=getComputedStyle(box)["width"];
+    var width=getComputedStyle(box)["width"];
+    var width=getComputedStyle(box)["width"];
+    // 获取显示窗口的宽度
+    var windowWidth=document.documentElement.clientWidth;
+    var windowWidth=document.documentElement.clientWidth;
+    var windowWidth=document.documentElement.clientWidth;
+    var windowWidth=document.documentElement.clientWidth;
+    //触屏事件
+    document.addEventListener("touchstart",function(){
+        console.log(ev);
+    })
+    document.addEventListener("touchstart",function(){
+        console.log(ev);
+    })
+    document.addEventListener("touchstart",function(){
+        console.log(ev);
+    })
+    document.addEventListener("touchstart",function(){
+        console.log(ev);
+    })
+    //触屏移动事件
+    document.addEventListener("touchmove",function(){
+        console.log(ev);
+    })
+     document.addEventListener("touchmove",function(){
+        console.log(ev);
+    })
+     document.addEventListener("touchmove",function(){
+        console.log(ev);
+    })
+     document.addEventListener("touchmove",function(){
+        console.log(ev);
+    })
+    //触屏结束事件
+    document.addEventListener("touchend",function(){
+        console.log(ev);
+    })
+     document.addEventListener("touchend",function(){
+        console.log(ev);
+    })
+     document.addEventListener("touchend",function(){
+        console.log(ev);
+    })
+     document.addEventListener("touchend",function(){
+        console.log(ev);
+    })
+    
+</script>
+</html>
+    

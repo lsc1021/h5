@@ -1,0 +1,137 @@
+.boxImg {
+    background: url("http://static.yixi.tv/background/2015-02-13/b2f29f86c15fc6828848737d10926998.1240x350.jpg");
+}
+
+.listChangesBox {
+    float: right;
+}
+
+h3 {
+    font-size: 2em;
+    display: inline-block;
+    line-height: 8px;
+}
+
+.listChangesBox ul {
+    height: 40px;
+    list-style: none;
+}
+
+.listChangesBox ul li {
+    float: left;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #dedede;
+    text-indent: 1em;
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    h3 {
+        width: 100%;
+        text-align: center;
+        line-height: 40px;
+    }
+    .listChangesBox {
+        float: none;
+    }
+    .listChangesBox ul li {
+        width: 33%;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+}
+
+.more {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    background: #cc3434;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.4em;
+    color: white;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.none {
+    display: none;
+    text-align: center;
+    color: #ccc;
+    font-size: 1em;
+    text-align: 2em;
+}
+
+.more:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .more {
+        display: none;
+    }
+    .footer {
+        display: none;
+    }
+}
+
+.videoCover .box {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.listChangesBox ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.listChangesBox ul li {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    background: #ccc;
+    text-indent: 0px;
+}
+
+.listChangesBox ul li:hover {
+    background: #00AEEF;
+}
+
+.listChangesBox ul li:hover .listbox {
+    display: block;
+}
+
+.listbox {
+    position: absolute;
+    z-index: 999;
+    display: none;
+    /*border: 1px solid white;*/
+    background: #ededed;
+    padding: 10px;
+    width: 100%;
+}
+
+.listbox div {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1em;
+    margin-top: 5px;
+    background: #cc3434;
+    opacity: 0.8;
+    color: white;
+}
+
+.listbox div:hover {
+    opacity: 1
+}

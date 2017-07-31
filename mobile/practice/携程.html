@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0
+    }
+
+@media all and (max-width: 400px) {
+    html {
+        font-size: 14px!important
+    }
+}
+
+  @media all and (min-width:400px) and (max-width:767px) {
+    html {
+        font-size: 16px!important
+    }
+}
+
+ @media all and (min-width:768px){
+    html {
+        font-size: 18px!important
+    }
+}
+body {
+    min-width: 320px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #F6F6F6;
+}
+/*header*/
+    #top{
+        width: 100%;
+        height: 3.3rem;
+    }
+    .search{width: 85%;
+    height: 3.3rem;
+    background-color: #F6F6F6;float: left;}
+    .me{width: 15%;
+    height: 3.3rem;
+    background-color: #F6F6F6;
+    float: left;position: relative;left: 0;top: 0;}
+    .me span{position: absolute;left:0;bottom:1%; width: 100%;text-align: center;
+    font-size: 12px;}
+    .search input{width: 90%;height: 2rem;margin: 0 auto;display: block;
+    box-sizing: border-box;
+    margin-top:.5rem;border-radius: 5%;border: 2px solid #ccc;outline: none;
+    background: url("back.png") -78px -380px no-repeat;
+    background-size: 150px 450px;
+    padding-left:12%;box-shadow: 0px 2px 8px #747474;}
+    .meimg{width:50px;height: 40px;margin: 0 auto;background: url("back.png") -76px -264px no-repeat;
+    background-size: 150px 450px;}
+    .lunbo{width: 100%;height:4rem;background: url("img1.jpg");background-size: 100% 100%}
+    .me::after{clear: both}
+    .detail{width:100%;height:6rem; border-radius:20px;overflow: hidden;margin-top: .1rem}
+    .de{display: block;background-color: #FF697A;
+     text-align: center;box-sizing: border-box;}
+    .de-1{width: 32%;height: 5.9rem;padding-top:1rem;float: left;
+    margin-top: .1rem;margin-left:1%;}
+    .de-1 p{color: white}
+    .deimg{width: 55px;height: 50px;margin: 0 auto;}
+    .i1{background: url("back.png") 0px -178px no-repeat; background-size:150px 450px;}
+    .de-2,.de-3,.de-4,.de-5{width: 32%;height: 2.9rem;float: left;padding-top: .7rem;
+    margin-left:1%;margin-top: .1rem;}
+    .detail::after{clear: both;}
+   .de1{display: block;background-color: blue;
+     text-align: center;box-sizing: border-box;}
+    .i2{background: url("back.png") -6px -398px no-repeat; background-size:150px 450px;}
+    .de2{display: block;background-color: green;
+     text-align: center;box-sizing: border-box;}
+    .i3{background: url("back.png") 5px -250px no-repeat; background-size:150px 450px;}
+    .detailbotm{width: 100%;height: 6rem;border-radius:8px;overflow: hidden;margin-top: .1rem}
+    .debtm{width: 100%;height: 3rem;display:-webkit-flex;}
+    .debtm p{height: 2.1rem;background-color: #FC9720;margin-bottom:.1rem;-webkit-flex:1;
+    flex: 1;margin-left: .1rem;color: white;text-align: center;padding-top: .8rem;}
+    </style>
+</head>
+<body>
+<div id="top">
+        <div class="search">
+            <input type="text" placeholder="搜索:目的地/酒店/景点/航班号">
+        </div>
+        <div class="me">
+            <div class="meimg"></div>
+            <span>我的</span>
+        </div>
+</div>
+<div class="lunbo"></div>
+<div class="detail">
+    <a class="de-1 de" >
+    <p>酒店</p>
+    <div class="deimg i1">
+    </div>
+    </a>
+    <a class="de-2 de">
+        <p style="color:white">海外酒店</p>
+    </a>
+    <a class="de-3 de">
+        <p style="color:white">团购</p>
+    </a>
+    <a class="de-4 de">
+        <p style="color:white"> 特价酒店</p>
+    </a>
+    <a class="de-5 de">
+         <p style="color:white">民宿·客栈</p>
+    </a>
+</div>
+<div class="detail">
+    <a class="de-1 de1" >
+    <p>机票</p>
+    <div class="deimg i2">
+    </div>
+    </a>
+    <a class="de-2 de1">
+        <p style="color:white">火车票·抢票</p>
+    </a>
+    <a class="de-3 de1">
+        <p style="color:white">汽车票·船票</p>
+    </a>
+    <a class="de-4 de1">
+        <p style="color:white"> 特价机票</p>
+    </a>
+    <a class="de-5 de1">
+         <p style="color:white">专车·租车</p>
+    </a>
+</div>   
+<div class="detail">
+    <a class="de-1 de2" >
+    <p>旅游</p>
+    <div class="deimg i3">
+    </div>
+    </a>
+    <a class="de-2 de2">
+        <p style="color:white">目的地攻略</p>
+    </a>
+    <a class="de-3 de2">
+        <p style="color:white">游轮</p>
+    </a>
+    <a class="de-4 de2">
+        <p style="color:white">周边游</p>
+    </a>
+    <a class="de-5 de2">
+         <p style="color:white">定制旅行</p>
+    </a>
+</div>
+<div class="detailbotm">
+    <div class="debtm">
+    <p class="six">景点·玩乐</p>
+    <p class="six">美食林</p>
+    <p class="six">全球购·换汇</p>
+    </div>
+    <div class="debtm">
+    <p class="six">礼品卡</p>
+    <p class="six">wifi·电话卡</p>
+    <p class="six">保险·签证</p>
+    </div>
+</div>
+<div class="serve">
+    <div class="serve-inner"></div>
+</div>
+</body>
+</html>

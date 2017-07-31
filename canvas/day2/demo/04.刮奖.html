@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #c5aa80;
+            background: url(img/1.jpg);
+            background-size: 100% auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = '#ccc';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 当鼠标按下
+        canvas.onmousedown = function() {
+            canvas.onmousemove = function(ev) {
+                ctx.beginPath();
+                ctx.globalCompositeOperation = "destination-out";
+                ctx.arc(ev.offsetX, ev.offsetY, 20, 0, 2 * Math.PI, false);
+                ctx.fillStyle = "black";
+                ctx.fill();
+            }
+        }
+        document.onmouseup = function() {
+            canvas.onmousemove = null;
+        }
+    </script>
+</body>
+
+
+</html>

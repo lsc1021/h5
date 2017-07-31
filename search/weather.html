@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/icon.png">
+    <title>闪灵查询助手</title>
+    <script src="js/shuzu.js"></script>
+    <link rel="stylesheet" href="https://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type="text/javascript" src="js/zepto.fx.touch.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/style.js"></script>
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<style>
+    body {
+        max-width: 1000px;
+        min-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .icon-left:before {
+        color: black;
+    }
+    
+    .icon-refresh:before {
+        color: black;
+    }
+    
+    .title {
+        font-size: 1rem;
+        background-color: rgba(96, 125, 139, 0.76);
+        color: cyan;
+    }
+    
+    .card-header {
+        width: 5rem;
+        margin: 0 auto;
+    }
+    
+    .card-header:after {
+        height: 4px;
+    }
+    
+    .content-padded h1 {
+        font-size: 4em;
+        margin: .4rem 0;
+        color: #FFC107;
+    }
+    
+    .content-padded p {
+        color: #FFEB3B;
+    }
+    
+    .d {
+        color: blue;
+    }
+    
+    .content-padded {
+        text-align: center;
+        background: url("img/weather1.jpg")no-repeat;
+        background-size: 100% 100%;
+        border-radius: 15px;
+        box-shadow: 2px 2px 10px #00BCD4;
+    }
+    
+    .card {
+        background: rgba(96, 125, 139, 0.46);
+    }
+    
+    .row {
+        text-align: center;
+    }
+    
+    .col-20 p {
+        border-radius: 9px;
+        margin-top: .5rem;
+        background-color: black;
+    }
+    
+    .sj {
+        color: #00BCD4;
+    }
+    
+    .tq {
+        color: #4CAF50;
+    }
+    
+    .wd {
+        color: #849aa4;
+    }
+    
+    .dayrow {
+        margin: .3rem auto;
+        background-color: rgba(0, 150, 136, 0.45);
+        border-radius: 16px;
+        color: aquamarine;
+    }
+    
+    .content-block-title {
+        font-family: cursive;
+        color: black;
+    }
+    
+    .item-inner {
+        text-align: center;
+    }
+    
+    .card .content-block,
+    .card .list-block {
+        margin: 0 auto;
+    }
+    
+    .item-subtitle {
+        background-color: rgba(90, 30, 233, 0.51);
+        color: rgba(3, 244, 4, 0.96);
+        border-radius: 15px;
+        margin-top: .2rem;
+    }
+    
+    .list-block li {
+        background: url("img/weather3.jpg");
+        background-size: 100% 100%;
+    }
+    
+    #dayweather {
+        background: url("img/weather2.jpg");
+        background-size: 100% 100%;
+    }
+    
+    .card-footer {
+        font-family: monospace;
+        font-size: .5rem;
+        color: #2e00d4;
+    }
+</style>
+
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-left pull-left" onclick="GoBack()"></a>
+                <a class="icon icon-refresh pull-right" onclick="GoInit()"></a>
+                <h1 class="title">闪灵天气</h1>
+            </header>
+            <!-- 这里是页面内容区 -->
+            <div class="content">
+                <div class="card">
+                    <!--城市标题-->
+                    <div class="card-header">
+                        <span class="d"></span>
+                        <span class="icon icon-caret" onclick="city()"></span></div>
+                    <!--详情-->
+                    <div class="card-content">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content-padded">
+                                    <h1 class="w"></h1>
+                                    <p class="t"></p>
+                                    <p class="k"></p>
+                                    <p class="g"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--近几个小时天气-->
+                        <div class="row" id="hourweather">
+
+                        </div>
+                        <!--最近三天天气-->
+                        <div class="card">
+                            <div class="card-content" id="dayweather">
+
+                            </div>
+                        </div>
+                        <!--空气质量-->
+                        <div class="content-block-title">空气质量</div>
+                        <div class="list-block media-list">
+                            <ul>
+                                <li>
+                                    <a href="#" class="item-link item-content">
+                                        <div class="item-media"><img src="img/kqzl.jpg" style='width: 4rem;'></div>
+                                        <div class="item-inner">
+                                            <div class="item-subtitle zl"></div>
+                                            <div class="item-subtitle zls"></div>
+                                            <div class="item-subtitle pm"></div>
+                                            <div class="item-subtitle pm1"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer gxsj">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js" charset="utf-8"></script>
+<script type="text/template" id="moban1">
+    <div class="col-20">
+        <p class="sj">
+            <%= endTime %>
+        </p>
+        <p class="tq">
+            <%= weather %>
+        </p>
+        <p class="wd">
+            <%= highestTemperature %> °
+        </p>
+    </div>
+</script>
+<script type="text/template" id="moban2">
+    <div class="row dayrow">
+        <div class="col-33">
+            <span style="display:block"><%= date %></span>
+            <span><%= week %></span>
+        </div>
+        <div class="col-33" style="padding-top: .5rem">
+            <%= weather %>
+        </div>
+        <div class="col-33" style="padding-top: .5rem">
+            <%= temp_night_c %>° /
+                <%= temp_day_c %>°
+        </div>
+    </div>
+</script>
+<script>
+    tianqi();
+    console.log(cities)
+
+    function tianqi() {
+        $.ajax({
+            type: "post",
+            url: "http://route.showapi.com/632-1",
+            dataType: "json",
+            data: {
+                showapi_appid: 40582,
+                showapi_sign: "30efa9bcecf146168ae9dc3d6101d564"
+            },
+            success: function(data) {
+                for (var i = 0; i < cities.length; i++) {
+                    if (cities[i].city == data.showapi_res_body.city) {
+                        didian = cities[i].cityid;
+                    }
+                };
+                nihao(didian)
+            }
+        })
+    };
+    // 模板1
+    var templeteStr = $("#moban1").html();
+    var zhuan = _.template(templeteStr);
+    // 模板2
+    var temp = $("#moban2").html();
+    var huan = _.template(temp);
+
+    function nihao(didian) {
+        $("#hourweather").html("");
+        $("#dayweather").html("");
+        $.ajax({
+            type: "get",
+            url: "php/1.php",
+            data: {
+                "cityIds": didian
+            },
+            success: function(data) {
+                var obj = JSON.parse(data);
+                var object = obj.value[0];
+                $(".t").html(object.weathers[0].weather) //天气获取
+                $(".w").html(object.realtime.temp + "°") //温度获取
+                $(".g").html(object.weathers[0].temp_day_c + "° / " + obj.value[0].weathers[0].temp_night_c + "°") //温差获取
+                $(".k").html(object.pm25.quality) //空气质量
+                $(".d").html(object.city) //当前城市
+                    // 几个小时
+                var jinqi = object.weatherDetailsInfo.weather3HoursDetailsInfos;
+                $.each(jinqi, function(i, v) {
+                        if (i < 5) {
+                            var result = zhuan(v);
+                            $("#hourweather").append(result);
+                        }
+                    })
+                    // 几天
+                var jinday = object.weathers;
+                console.log(jinday);
+                $.each(jinday, function(i, v) {
+                        if (i > 0 && i < 5) {
+                            var result = huan(v);
+                            $("#dayweather").append(result);
+                        }
+                    })
+                    // 空气质量
+                $(".zl").html("空气质量：" + object.pm25.quality);
+                $(".zls").html("污染指数：" + object.pm25.aqi);
+                $(".pm").html("pm2.5：" + object.pm25.pm25);
+                $(".pm1").html("pm10：" + object.pm25.pm10);
+                // 发布时间
+                $(".gxsj").html("更新时间：" + object.realtime.time);
+            }
+        })
+    }
+    //手动输入城市
+    function city() {
+        var name = prompt("请输入您城市名", "");
+        if (name) {
+            var didian = ""
+            for (var i = 0; i < cities.length; i++) {
+                if (cities[i].city == name) {
+                    didian = (cities[i].cityid)
+                    console.log(didian)
+                }
+            };
+            if (didian == "") {
+                alert("你输入的地点有误")
+            } else {
+                nihao(didian)
+            }
+        }
+    }
+</script>
+
+</html>

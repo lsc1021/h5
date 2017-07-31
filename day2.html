@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         li {
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            background: yellow;
+            margin: 10px;
+        }
+         #drag {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" ></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box1"></div>
+    <div id="box" class="box2 box3 box4"></div>
+    <div id="user" data-id="123" data-user="knight"></div>
+    <li draggable="true">knight</li>
+    <li draggable="true">king</li>
+    <li draggable="true">queen</li>
+    <div id="drag"></div>
+</body>
+<script>
+    // 获取一个classname
+    var box=document.querySelector(".box");
+    box.innerHTML="hello world";
+
+    var box=document.querySelector(".box");
+    box.innerHTML="hello world";
+
+    var box=document.querySelector(".box");
+    box.innerHTML="hello world";
+
+    var box=document.querySelector(".box");
+    box.innerHTML="hello world";
+
+
+
+    //获取节点集合
+    var all=document.querySelectorAll(".box , .box1");
+    console.log(all);
+    all[0].innerHTML="hello king"
+
+     var all=document.querySelectorAll(".box , .box1");
+    console.log(all);
+    all[1].innerHTML="hello queen"
+
+     var all=document.querySelectorAll(".box , .box1");
+    console.log(all);
+    all[2].innerHTML="hello princess"
+
+     var all=document.querySelectorAll(".box , .box1");
+    console.log(all);
+    all[3].innerHTML="hello prince"
+    
+
+
+    //classlist
+    var box=document.querySelector("#box");
+    console.log(box.classList);
+    console.log(box.classList.value);
+    box.classList.remove("box3");
+    console.log(box.classList.value);
+    box.classList.add("box5");
+    console.log(box.classList.value);
+    box.classList.toggle("box5");
+    console.log(box.classList.value);
+
+    var box=document.querySelector("#box");
+    console.log(box.classList);
+    console.log(box.classList.value);
+    box.classList.remove("box3");
+    console.log(box.classList.value);
+    box.classList.add("box5");
+    console.log(box.classList.value);
+    box.classList.toggle("box5");
+    console.log(box.classList.value);
+
+
+    var box=document.querySelector("#box");
+    console.log(box.classList);
+    console.log(box.classList.value);
+    box.classList.remove("box3");
+    console.log(box.classList.value);
+    box.classList.add("box5");
+    console.log(box.classList.value);
+    box.classList.toggle("box5");
+    console.log(box.classList.value);
+
+
+
+    var box=document.querySelector("#box");
+    console.log(box.classList);
+    console.log(box.classList.value);
+    box.classList.remove("box3");
+    console.log(box.classList.value);
+    box.classList.add("box5");
+    console.log(box.classList.value);
+    box.classList.toggle("box5");
+    console.log(box.classList.value);
+    
+    
+
+    //eval() 函数会将传入的字符串当做JavaScript代码进行执行。
+    var str="function fn(){alert(123)}";
+    eval(str);
+    fn();
+
+    var str="function fn(){alert(123)}";
+    eval(str);
+    fn();
+
+    var str="function fn(){alert(123)}";
+    eval(str);
+    fn();
+
+    var str="function fn(){alert(123)}";
+    eval(str);
+    fn();
+
+
+
+    //json字符串转换成js对象
+    // eval()方法
+    var str1 = '{"name":"king"}';
+    var dataObj = eval("(" + str1 + ")");
+    console.log(dataObj);
+    // JSON.parse()方法 更严格不转换非法字符
+   var qq= JSON.parse('{"name":"king"}');
+    console.log(qq);   
+
+    
+    var str1 = '{"name":"king"}';
+    var dataObj = eval("(" + str1 + ")");
+    console.log(dataObj);
+  
+   var qq= JSON.parse('{"name":"king"}');
+    console.log(qq);   
+
+    
+    var str1 = '{"name":"king"}';
+    var dataObj = eval("(" + str1 + ")");
+    console.log(dataObj);
+  
+   var qq= JSON.parse('{"name":"king"}');
+    console.log(qq);   
+
+ 
+    var str1 = '{"name":"king"}';
+    var dataObj = eval("(" + str1 + ")");
+    console.log(dataObj);
+ 
+   var qq= JSON.parse('{"name":"king"}');
+    console.log(qq);   
+
+    //stringify()将js对象转换为字符串
+     var knight = {
+        name: 'knight',
+        age: 22
+    }
+    var str=JSON.stringify(knight);
+    console.log(str);
+
+    var knight = {
+        name: 'knight',
+        age: 22
+    }
+    var str=JSON.stringify(knight);
+    console.log(str);
+
+    var knight = {
+        name: 'knight',
+        age: 22
+    }
+    var str=JSON.stringify(knight);
+    console.log(str);
+
+    var knight = {
+        name: 'knight',
+        age: 22
+    }
+    var str=JSON.stringify(knight);
+    console.log(str);
+
+
+
+    //replacer();
+     function replacer(key, value) {
+        if (typeof value === "string") {
+            return undefined;
+        }
+        return value;
+    }
+    var foo = {
+        name: "Mozilla",
+        age: 20
+    };
+    var jsonString = JSON.stringify(foo, replacer);
+    console.log(jsonString);
+
+
+
+
+    function replacer(key, value) {
+        if (typeof value === "string") {
+            return undefined;
+        }
+        return value;
+    }
+    var foo = {
+        name: "Mozilla",
+        age: 20
+    };
+    var jsonString = JSON.stringify(foo, replacer);
+    console.log(jsonString);
+
+
+
+
+    function replacer(key, value) {
+        if (typeof value === "string") {
+            return undefined;
+        }
+        return value;
+    }
+    var foo = {
+        name: "Mozilla",
+        age: 20
+    };
+    var jsonString = JSON.stringify(foo, replacer);
+    console.log(jsonString);
+
+
+
+    function replacer(key, value) {
+        if (typeof value === "string") {
+            return undefined;
+        }
+        return value;
+    }
+    var foo = {
+        name: "Mozilla",
+        age: 20
+    };
+    var jsonString = JSON.stringify(foo, replacer);
+    console.log(jsonString);
+
+   //dataset
+   var user=document.querySelector("#user");
+   console.log(user.dataset.id);
+   user.dataset.dataOf="222";
+   console.log(user.dataset.dataOf);
+
+    var user=document.querySelector("#user");
+   console.log(user.dataset.id);
+   user.dataset.dataOf="222";
+   console.log(user.dataset.dataOf);
+
+    var user=document.querySelector("#user");
+   console.log(user.dataset.id);
+   user.dataset.dataOf="222";
+   console.log(user.dataset.dataOf);
+
+    var user=document.querySelector("#user");
+   console.log(user.dataset.id);
+   user.dataset.dataOf="222";
+   console.log(user.dataset.dataOf);
+
+
+   //拖拽及上传文件
+    var Li = document.getElementsByTagName('li');
+    var drag = document.getElementById('drag');
+     for (var i = 0; i < Li.length; i++) {
+        Li[i].ondragstart = function() {
+            this.style.background = "green";
+        }
+
+        Li[i].ondragend = function() {
+            this.style.background = 'yellow';
+        }
+    }
+     drag.ondragenter = function() {
+        this.style.background = 'blue';
+    }
+    drag.addEventListener('drop', fileInfo);
+    drag.addEventListener('dragover', onDragOver);
+
+    function fileInfo(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log(ev.dataTransfer)
+    }
+
+    function onDragOver(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log('文件拖放成功')
+    }
+
+    var Li = document.getElementsByTagName('li');
+    var drag = document.getElementById('drag');
+     for (var i = 0; i < Li.length; i++) {
+        Li[i].ondragstart = function() {
+            this.style.background = "green";
+        }
+
+        Li[i].ondragend = function() {
+            this.style.background = 'yellow';
+        }
+    }
+     drag.ondragenter = function() {
+        this.style.background = 'blue';
+    }
+    drag.addEventListener('drop', fileInfo);
+    drag.addEventListener('dragover', onDragOver);
+
+    function fileInfo(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log(ev.dataTransfer)
+    }
+
+    function onDragOver(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log('文件拖放成功')
+    }
+
+
+    var Li = document.getElementsByTagName('li');
+    var drag = document.getElementById('drag');
+     for (var i = 0; i < Li.length; i++) {
+        Li[i].ondragstart = function() {
+            this.style.background = "green";
+        }
+
+        Li[i].ondragend = function() {
+            this.style.background = 'yellow';
+        }
+    }
+     drag.ondragenter = function() {
+        this.style.background = 'blue';
+    }
+    drag.addEventListener('drop', fileInfo);
+    drag.addEventListener('dragover', onDragOver);
+
+    function fileInfo(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log(ev.dataTransfer)
+    }
+
+    function onDragOver(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log('文件拖放成功')
+    }
+
+
+    var Li = document.getElementsByTagName('li');
+    var drag = document.getElementById('drag');
+     for (var i = 0; i < Li.length; i++) {
+        Li[i].ondragstart = function() {
+            this.style.background = "green";
+        }
+
+        Li[i].ondragend = function() {
+            this.style.background = 'yellow';
+        }
+    }
+     drag.ondragenter = function() {
+        this.style.background = 'blue';
+    }
+    drag.addEventListener('drop', fileInfo);
+    drag.addEventListener('dragover', onDragOver);
+
+    function fileInfo(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log(ev.dataTransfer)
+    }
+
+    function onDragOver(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        console.log('文件拖放成功')
+    }
+</script>
+</html>

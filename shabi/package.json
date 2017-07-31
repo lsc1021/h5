@@ -1,0 +1,11 @@
+{
+  "name": "shabi",
+  "version": "1.0.1",
+  "description": "这是一个吊炸天的包，你确定要下载吗？",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

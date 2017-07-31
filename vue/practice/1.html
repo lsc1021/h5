@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!--<div id="box">
+        {{msg}}
+    </div>-->
+
+
+    <!--<div id="box1">
+        <input type="text" v-model="msg">
+        <p>{{msg}}</p>
+    </div>-->
+
+
+    <!--<div id="box2">
+        <div :useId="id">{{msg}}</div>
+    </div>-->
+
+    <!--<div id="box3" :id="knight">
+        <div v-html="html"></div>
+    </div>-->
+
+    <!--<div id="box4" :id="knight">
+        <div v-text="html"></div>
+    </div>-->
+
+    <!--<div id="box5">
+        <span>hello stark</span>
+    </div>
+    <script type="x-template" id="temp">
+        <div>
+            hello,{{knight}},
+            <span>hi</span>
+        </div>
+    </script>-->
+
+    <!--<div id="box6" v-html="html">
+    </div>-->
+
+</body>
+<script>
+    let data = {
+        msg: "hello knight",
+        id: "6666",
+        html: "<div> hello stark </div>",
+        knight: "250"
+    }
+
+    // 初体验
+    // var vm = new Vue({
+    //     el: "#box",
+    //     data: data
+    // })
+
+    // 双向绑定
+    // var vm = new Vue({
+    //     el: "#box1",
+    //     data: data
+    // })
+
+
+    // 指令(绑定id)
+    // var vm = new Vue({
+    //     el: "#box2",
+    //     data: data
+    // })
+
+    // html模板
+    // var vm = new Vue({
+    //     el: "#box3",
+    //     data: data
+    // })
+
+    //text模板、
+    // var vm = new Vue({
+    //     el: "#box4",
+    //     data: data
+    // })
+
+    // template模板
+    // var vn = new Vue({
+    //     el: "#box5",
+    //     data: data,
+    //     template: "#temp"
+    // })
+
+    //render
+    // let obj = {
+    //     html: "<h1> knight </h1>"
+    // }
+    // var vm = new Vue({
+    //     el: "#box6",
+    //     data: obj,
+    //     render(creatElement) {
+    //         return creatElement(
+    //             "ul", [
+    //                 creatElement("li", 1),
+    //                 creatElement("li", 2),
+    //                 creatElement("li", 3),
+    //             ]
+    //         )
+    //     }
+    // })
+</script>
+
+</html>

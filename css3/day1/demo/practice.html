@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+/*关系选择器*/
+    /*box下子元素的p*/
+ .box>p {
+            color: red;
+        }
+     /*box下的包含元素box1  */
+        .box .box1 {
+            color: red;
+        }
+    /*选择紧跟在box2后的h3*/
+        .box2+h3 {
+            color: red;
+        }
+     /*选择box2后的所有兄弟元素p */
+        .box2~p {
+            color: yellowgreen;
+        }
+    /*选择p后面的所有兄弟元素p，不包过自己本身  */
+        p~p {
+            color: yellowgreen;
+        }
+
+    /*属性选择器*/
+    选择属性值等于stark的元素
+        div[class="stark"] {
+            color: red;
+        }
+    选择属性值用空格分割，并且有一个值等于box的元素
+        div[class~='box'] {
+            color: red;
+        }
+    选择属性值以box开头的元素
+        div[class^='box'] {
+            color: red;
+        }
+    选择属性值以box结尾的元素    
+        div[class$='box'] {
+            color: red;
+        }
+    选择属性值包含box的元素    
+        div[class*='box'] {
+            color: red;
+        }
+     选择属性值以box开头并以-链接的元素
+        li[class|="box"] {
+            color: red;
+        }
+
+        伪类选择器
+        选择li元素的第一个元素
+         li:first-child {
+            color: red;
+        }
+        选择li元素的最后一个元素
+        li:last-child {
+            color: red;
+        }
+        选择唯一一个子元素
+        li:only-child {
+            color: red;
+        }
+        选择父元素的第2个子元素
+         li:nth-child(2) {
+            color: red;
+        }
+        选择同类元素中的第一个元素
+         p:first-of-type {
+            color: #f00;
+        }
+        选择同类元素中的最后一个元素
+        p:last-of-type {
+            color: #f00;
+        }
+        选择同类元素中的唯一的一个同级兄弟元素
+         p:only-of-type {
+            color: #f00;
+        }
+        选择同类元素中的第2个同级兄弟元素
+         p:nth-of-type(2) {
+            color: #f00;
+        }
+         选择同类元素中的最后一个同级兄弟元素
+         p:nth-last-of-type(1) {
+            color: #f00;
+        }
+        选择空的元素，起始结束标签必须完全闭合
+        div:empty {
+           background-color: red；
+        }
+        选择页面上被勾选中的元素
+         input:checked+span {
+            background: #f00;
+        }
+        选择页面上可以使用的元素
+         input[type="text"]:enabled {
+           color: red；
+        }
+        选择页面上不可用状态的元素
+         input[type="text"]:disabled {
+            color: yellow;
+        }
+        匹配相关URL指向的元素。
+         div .panel:target {
+            border-color: red;
+        }
+        匹配使用特殊语言的元素
+         p:lang(zh-cn) {
+            color: #f00;
+        }
+        /*匹配不含有.abc属性的元素*/
+        p:not(.abc) {
+            color: #f00;
+        }
+    匹配E元素在文档的根元素。在HTML中，根元素永远是HTML
+        html:root {
+            color: #f00;
+        }
+    设置在对象后发生的内容。用来和content属性一起使用
+         p::after {
+            content: 'aaa';
+        }
+    设置在对象前发生的内容。用来和content属性一起使用
+         p::before {
+            content: 'aaa';
+        }
+    设置对象被选择时的样式。 
+         p::selection {
+            background-color: orange;
+            color: green;
+        }
+        属性
+    设置阴影shadow
+     text-shadow: 1px 1px 14px green;
+     设置边框弧度
+      border-radius: 90px;
+</style>
+<body>
+    
+</body>
+
+</html>

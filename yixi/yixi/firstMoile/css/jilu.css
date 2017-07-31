@@ -1,0 +1,148 @@
+.boxImg {
+    width: 100%;
+    height: 350px;
+    max-width: 1240px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: url('http://static.yixi.tv/background/2015-02-12/67d3f50c1aa2d4e273b7dc840bfbb06a.1240x350.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.mainRecordList {
+    width: 100%;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1380px) {
+    .mainRecordList .mainRecordCell {
+        height: 480px;
+    }
+}
+
+.mainRecordList .mainRecordCell {
+    width: 49.5%;
+    margin: 0.2%;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border: 1px solid #dedede;
+    box-shadow: 0px 1px 2px #bbb;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    height: 450px;
+    padding: 5px;
+}
+
+.recordImg {
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40%;
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.recordWordBox {
+    width: 60%;
+    box-sizing: border-box;
+    padding: 0px 10px 0px 15px;
+    float: left;
+}
+
+.recordWordBox .title {
+    display: block;
+    font-size: 1.4em;
+    line-height: 2em;
+    border-bottom: 1px dashed #ccc;
+}
+
+.recordWordBox .desc {
+    padding-top: 20px;
+    display: block;
+    text-align: justify;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    max-height: 360px;
+    overflow: hidden;
+}
+
+.recordListButton {
+    background-color: #f2f2f2;
+    border: 1px solid #ededed;
+    color: #e27d7d;
+}
+
+.recordWordBox a {
+    text-decoration: none;
+    color: #e27d7d;
+}
+
+.recordWordBox a:hover {
+    background: #e27d7d;
+    color: white;
+}
+
+.recordListButton {
+    width: 100%;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    box-sizing: border-box;
+    margin: 10px 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .mainRecordList .mainRecordCell {
+        height: auto;
+        padding: 0px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .mainRecordList .mainRecordCell {
+        width: 100%;
+        margin: 10px 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recordImg {
+        background-position: center top;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100%;
+        float: none;
+        height: 400px;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recordWordBox {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0px 10px;
+        float: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .recordWordBox .title {
+        text-align: center;
+    }
+    .recordWordBox .desc {
+        overflow: visible;
+        max-height: inherit;
+    }
+}

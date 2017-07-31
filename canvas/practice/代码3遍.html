@@ -1,0 +1,26 @@
+<script>
+    // 在源图像顶部显示目标图像,目标图像位于源图像之外的部分不可见;
+    ctx.globalCompositeOperation = "destination-atop";
+    ctx.globalCompositeOperation = "destination-atop";
+    ctx.globalCompositeOperation = "destination-atop";
+    // 在源图像之外显示目标图像。源图像之外的目标图像部分会被显示，源图像透明;
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.globalCompositeOperation = "destination-out";
+    // 保存默认状态
+    ctx.save(); 
+    ctx.save(); 
+    ctx.save(); 
+    //弹出保存的状态和属性
+    ctx.restore(); 
+    ctx.restore();
+    ctx.restore();
+    //旋转绘画
+    ctx.rotate(2*math.PI/180);
+    ctx.rotate(2*math.PI/180);
+    ctx.rotate(2*math.PI/180);
+    //平移绘画
+    ctx.translate(10, 10);
+    ctx.translate(10, 10);
+    ctx.translate(10, 10);
+</script>

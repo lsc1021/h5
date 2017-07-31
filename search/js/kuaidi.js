@@ -1,0 +1,16 @@
+kuaidis = {
+    "EMS快递查询": "ems",
+    "EMS国际快递查询": "emsguoji",
+    "邮政国内": "youzhengguonei",
+    "邮政国际": "youzhengguoji",
+    "顺丰速运": "shunfeng",
+    "天天快递": "tiantian",
+    "申通快递": "shentong",
+    "1号仓": "onehcang",
+    "优速快递": "youshuwuliu",
+    "圆通快递": "yuantong",
+    "韵达快递": "yunda",
+    "百世快递": "huitongkuaidi",
+    "德邦": "debangwuliu",
+    "中通快递": "zhongtong",
+}

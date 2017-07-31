@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闪灵查询助手</title>
+    <link rel="stylesheet" href="https://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type="text/javascript" src="js/zepto.fx.touch.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/style.js"></script>
+    <link rel="stylesheet" href="css/media.css">
+</head>
+
+<body>
+    <!--模板-->
+    <!--head-->
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav">
+                <a class="icon icon-left pull-left" onclick="GoBack()"></a>
+                <a class="icon icon-refresh pull-right" onclick="GoInit()"></a>
+                <h1 id="head" class="title"></h1>
+            </header>
+            <!--详情展示-->
+            <div class="content" id="content">
+
+                <!--内容-->
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js" charset="utf-8"></script>
+<script type="text/template" id="tem">
+    <div class="list-block media-list">
+        <ul>
+            <li>
+                <a href="#" class="item-link item-content">
+                    <div class="item-media">
+                        <img src="img/train.png" style='width: 4rem;'>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title-row" id="first">
+                            <div class="item-title" class="startTime">➸
+                                <%= DepartTime %>
+                            </div>
+                            <div class="item-title" class="startAdd">
+                                <%= GoStation %>
+                            </div>
+                            <div class="item-title" class="carClass">
+                                <%= trainNum %>
+                            </div>
+                        </div>
+                        <div class="item-title-row" id="second">
+                            <div class="item-subtitle" class="endsTime">➷
+                                <%= ArriveTime %>
+                            </div>
+                            <div class="item-subtitle" class="endAdd">
+                                <%= EndStation %>
+                            </div>
+                            <div class="item-subtitle" class="hourLength">
+                                <%= durationStr %>
+                            </div>
+                        </div>
+                        <div class="item-title-row" id="three">
+                            <div class="item-subtitle" class="seat1">
+                                <%= seat1 %>
+                            </div>
+                            <div class="item-subtitle" class="seat2">
+                                <%= seat2 %>
+                            </div>
+                            <div class="item-subtitle" class="seat3">
+                                <%= seat3 %>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    </body>
+</script>
+<script>
+    // head标题    
+    $("#head").html(localStorage.setstart + "➣" + localStorage.setend + "♚" + localStorage.settime);
+    // 模板
+    var templeteStr = $("#tem").html();
+    var compiled = _.template(templeteStr);
+    // api请求
+    $.ajax({
+        type: "get",
+        url: "php/api.php",
+        data: {
+            time: localStorage.settime,
+            start: localStorage.setstart,
+            end: localStorage.setend
+        },
+        success: function(data) {
+            var obj = JSON.parse(data)
+                // console.log(obj);
+            if (obj.data.list) {
+                $.each(obj.data.list, function(i, v) {
+                    var DepartTime = v.departDepartTime;
+                    var ArriveTime = v.destArriveTime;
+                    var GoStation = v.departStationName;
+                    var EndStation = v.destStationName;
+                    var durationStr = v.durationStr;
+                    var trainNum = v.trainNum;
+                    var arr = [];
+                    $.each(v.prices, function(index, val) {
+                        var seatName = val.seatName;
+                        var leftNumber = val.leftNumber;
+                        arr.push(seatName + leftNumber);
+                    })
+                    var seat1 = arr[0];
+                    var seat2 = arr[1];
+                    var seat3 = arr[2];
+                    var objects = {
+                        DepartTime: DepartTime,
+                        ArriveTime: ArriveTime,
+                        GoStation: GoStation,
+                        EndStation: EndStation,
+                        durationStr: durationStr,
+                        trainNum: trainNum,
+                        seat1: seat1,
+                        seat2: seat2,
+                        seat3: seat3,
+                    }
+                    var result = compiled(objects);
+                    $("#content").append(result);
+                })
+            } else {
+                var html = '<div id="img"> </div>';
+                $("#content").append(html);
+            }
+
+        },
+        error: function(data) {}
+    });
+</script>
+
+</html>

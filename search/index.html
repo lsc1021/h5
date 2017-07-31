@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/icon.png">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>闪灵查询小助手</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<style>
+    body {
+        max-width: 1000px;
+        min-width: 320px;
+        margin: 0 auto;
+        background: url("img/background.jpg") no-repeat;
+        background-size: 100% 100%;
+    }
+</style>
+
+<body>
+    <!--导航栏开始布局-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <!--当你切换到移动端或屏幕比较小的时候显示的logo-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="img/logo.png">
+                </a>
+                <!--标题-->
+                <ul class="navbar-nav">
+                    <h3 class="weather"><span class="label label-default">闪灵火车票</span></h3>
+                </ul>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--收集导航链接、表格和其他内容来进行切换-->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <a href="weather.html">
+                        <h3 class="weather"><span class="label label-primary">天气助手</span></h3>
+                    </a>
+                    <a href="kuaidi.html">
+                        <h3 class="weather"><span class="label label-success">快递查询</span></h3>
+                    </a>
+                    <a href="test.html">
+                        <h3 class="weather"><span class="label label-info">闪灵百科</span></h3>
+                    </a>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!--轮播图-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/5.jpg" alt=""></div>
+        </div>
+        <div class="swiper-button-next swiper-button-black"></div>
+        <div class="swiper-button-prev swiper-button-black"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!--主页开始-->
+
+    <ul class="nav nav-tabs nav-justified">
+        <li class="cha" role="presentation"><a href="#">国内火车票查询</a></li>
+    </ul>
+
+    <!--选择地址-->
+    <div class="container-fluid">
+        <div class="input-group">
+            <span class="input-group-addon  input-group-lg" id="basic-addon1">准备！ </span>
+            <input id="start" type="text" class="form-control" placeholder="输入出发地" aria-describedby="basic-addon1">
+            <input id="end" type="text" class="form-control" placeholder="输入目的地" aria-describedby="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">出发！</span>
+        </div>
+    </div>
+    <!--时间-->
+    <div class="container-fluid" id="date">
+        <div class="input-group">
+            <span class="input-group-addon input-group-lg">选择</span>
+            <input id="timer" type="date" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <span class="input-group-addon input-group-lg">时间</span>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert">请检查输入信息是否有误</div>
+    <!--查询按钮-->
+    <div id="search">
+        <button type="button" id="chaxun" class="btn btn-primary btn-lg btn-block">开始旅行</button>
+    </div>
+</body>
+<script>
+    change();
+    // 调整屏幕大小
+    function change() {
+        var screenh = window.screen.availHeight;
+        var bodyh = document.body.clientHeight;
+        if (screenh > bodyh) {
+            $("body").height(screenh);
+        } else {}
+    }
+    // 轮播图
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 2000, //可选选项，自动滑动
+        initialSlide: 0,
+        speed: 500,
+        autoplayDisableOnInteraction: false,
+        loop: true,
+        effect: 'cube',
+        prevButton: '.swiper-button-prev',
+        nextButton: '.swiper-button-next',
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        keyboardControl: true,
+    })
+
+    // 查询
+    $("#chaxun").click(function() {
+        var start = $("#start").val();
+        var end = $("#end").val();
+        var timer = $("#timer").val();
+        //检测input不为空
+        if (start !== "" && end !== "" && timer !== "") {
+            localStorage.setstart = start;
+            localStorage.setend = end;
+            localStorage.settime = timer;
+            location.href = "search.html";
+        } else {
+            $(".alert,.alert-danger").show();
+        }
+
+    })
+
+    // 轮播图图片
+</script>
+
+</html>

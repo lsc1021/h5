@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas {
+          background: url("http://img.bizhi.sogou.com/images/800x600/2013/11/14/408549.jpg")
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+</body>
+<script src="jquery.js"></script>
+<script>
+var canvas=document.getElementById("canvas");
+var ctx=canvas.getContext("2d");
+ ctx.fillStyle = "#ccc";
+ ctx.fillRect(0, 0, 800, 600);
+ var state=false;
+    $(document).mousedown(function(){
+        state=true;
+    })
+     $(document).mousemove(function(ev){
+        if(state){
+        var x=ev.clientX;
+        var y=ev.clientY;
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 30, 0, 2 * Math.PI, false);
+        ctx.fill();
+            }
+        })
+    $(document).mouseup(function(){
+         state=false;
+    })
+</script>
+</html>

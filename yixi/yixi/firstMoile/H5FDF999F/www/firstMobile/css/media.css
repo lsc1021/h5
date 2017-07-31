@@ -1,0 +1,114 @@
+@media screen and (max-width: 768px) {
+    .bannerDiscContent {
+        top: 25%;
+    }
+    .swiper-button-prev {
+        display: none;
+    }
+    .swiper-button-next {
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .visible-xs-block {
+        margin-top: 20px;
+    }
+    .visible-xs-block span {
+        background: #337ab7;
+    }
+    .navBg {
+        padding: 0px 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bannerHeadBox {
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bannerWordBox {
+        padding: 0px;
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bannerWordBox .name {
+        text-align: center;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .bannerWordBox .title {
+        text-align: center;
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bannerWordBox .brief {
+        display: none;
+    }
+    .box {
+        display: block;
+        width: 50%;
+        height: 100%;
+        background: #000;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .baseTopicBox {
+        float: left;
+        width: 50%;
+        height: 354.375px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .baseVideoList li {
+        width: 100%;
+        max-width: 100%;
+        padding: 0px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .baseVideoBox {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footerBox .newCommom {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .footerBox .contact,
+    .footerBox .QA {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    .footerBox .downloadApp {
+        float: left;
+        width: 100%;
+        clear: both;
+        margin: 0 auto;
+    }
+}

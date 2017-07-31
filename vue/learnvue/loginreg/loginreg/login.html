@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <div class="wrap">
+			<div class="content">
+				<div class="title">
+					<!--"<a href =\"list.html?"+item.cat.id+"\">" + item.cat_id+ "</a>";-->
+					<a href="login.html">登录</a>
+					<span>|</span>
+					<a href="register.html">注册</a>
+				</div>
+				<div>
+					<label>用户名</label>
+					<input type="text" name="username" id="username" value="" placeholder="请输入您的用户名" />
+				</div>
+				<div>
+					<label>密码</label>
+					<input type="password" name="" id="password" value="" placeholder="请输入您的密码" />
+				</div>
+				<input type="button" name="loginbtn" id="loginbtn" value="登录" />
+
+			</div>
+		</div>
+    <script src="../js/jquery-2.1.1.min.js"> </script>
+</body>
+<script>
+    var username = document.querySelector("#username");
+var password = document.querySelector("#password");
+var loginbtn = document.querySelector("#loginbtn");
+console.log(loginbtn);
+//点击登录
+loginbtn.onclick = function() {
+	console.log(000);
+	console.log(username.value);
+	console.log(password.value);
+	//发送请求
+	$.ajax({
+		type: "post",
+		url: "../php/common.php",
+		data: {
+			type: "login",
+			username: username.value,
+			password: password.value
+		},
+		success: function(res) {
+			console.log(res);
+			console.log(res.userinfo);
+			console.log(res.userinfo.err);
+			if(res.userinfo.err == 0) {
+				alert("登录成功");				
+			} else if(res.userinfo.err==1){
+				alert(res.userinfo.msg);
+			}else if(res.userinfo.err==2){
+				alert(res.userinfo.msg);
+			}
+		},
+		error:function(res){
+			console.log(res);
+		}
+	});
+
+}
+</script>
+</html>

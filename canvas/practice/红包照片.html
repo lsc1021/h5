@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #blur-div{
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+    #blur-image{
+        display: block;
+        width: 800px;
+        height: 600px;
+        margin: 0 auto;
+        filter: blur(10px);
+        -webkit-filter:blur(10px);
+        -moz-filter:blur(10px);
+        -ms-filter:blur(10px);
+        -o-filter:blur(10px);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 0;
+    }
+    #canvas{
+        display: block;
+        margin: 0 auto;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 100;
+    }
+    .button{
+        display:block;
+        position: absolute;
+        z-index: 200;
+        width: 100px;
+        height: 30px;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 5px;
+    }
+    #reset-button{
+        left: 200px;
+        bottom: 20px;
+        background-color: #058;
+    }
+    #reset-button:hover{
+        background-color: #047;
+    }
+    #show-button{
+        right: 200px;
+        bottom: 20px;
+        background-color: #085;
+    }
+    #show-button:hover{
+        background-color: #074;
+    }
+    </style>
+</head>
+<body>
+    <div id="blur-div">
+    <img id="blur-image"src="http://img.bizhi.sogou.com/images/800x600/2013/11/14/408549.jpg" alt="">
+    <canvas id="canvas"></canvas>
+    <button id="reset-button" class="button" onclick="reset()">RESET</button>
+    <button id="show-button" class="button" onclick="show()">SHOW</button>
+    </div>
+</body>
+<script>
+var canvaswidth=800;
+var canvasheight=600;
+var canvas=document.getElementById("canvas");
+var ctx=canvas.getContext("2d");
+canvas.width=canvaswidth;
+canvas.height=canvasheight;
+var image=new Image();
+var radius=50;
+var clippingRegion={x:1,y:1,r:radius}
+image.src="http://img.bizhi.sogou.com/images/800x600/2013/11/14/408549.jpg";
+image.onload=function(e){
+    initCanvas();
+}
+function initCanvas(){
+    clippingRegion={x:Math.random()*(canvas.width-2*radius)+radius,
+        y:Math.random()*(canvas.height-2*radius)+radius,
+        r:radius};
+    draw(image,clippingRegion);
+}
+function setClippingRegion(clippingRegion){
+ctx.beginPath();
+ctx.arc(clippingRegion.x,clippingRegion.y,clippingRegion.r,0,2*Math.PI,false);
+ctx.clip();
+}
+function draw(image){
+    ctx.clearRect(0,0,canvaswidth,canvasheight);
+    ctx.save();
+    setClippingRegion(clippingRegion);
+    ctx.drawImage(image,0,0);
+    ctx.restore();
+}
+function show(){
+   var time=setInterval(function(){
+        console.log("animation");
+     clippingRegion.r+=20;
+     if(clippingRegion.r>1000){
+        clearInterval(time);
+     }
+    draw(image,clippingRegion);
+    },30)
+   
+}
+function reset(){
+    initCanvas();
+}
+</script>
+</html>

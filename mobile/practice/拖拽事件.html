@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{width:200px;height: 200px;background:url("1.jpg")no-repeat;
+    background-size: 100% 100%;position: absolute;}
+    </style>
+</head>
+<body>
+    <div id="box">
+   <!--<img src="1.jpg" alt="">-->
+     </div>
+</body>
+<script>
+    var box=document.getElementById("box");
+    var x,y;
+    var nx=0;
+    var ny=0;
+    box.addEventListener("touchstart",function(ev){
+         ev.preventDefault();
+         x=ev.touches[0].clientX-nx;
+         y=ev.touches[0].clientY-ny;
+    })
+    box.addEventListener("touchmove", function(ev){
+         nx=ev.touches[0].clientX-x;
+         ny=ev.touches[0].clientY-y;
+        console.log(nx);
+        console.log(ny);
+        box.style.left=nx+"px";
+        box.style.top=ny+"px";
+    })
+</script>
+</html>

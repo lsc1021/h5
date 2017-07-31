@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        background-color:black;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div class="konvajs-content" role="presentation" style="position: relative; width: 1366px; height: 638px;">
+    <canvas width="1366" height="638" style="padding: 0px; margin: 0px; border: 0px; background: transparent; position: absolute; top: 0px; left: 0px; width: 1366px; height: 638px;"></canvas>
+    </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/konva/1.6.3/konva.min.js"></script>
+<script>
+    
+    var stage = new Konva.Stage({
+       
+        container: 'container',
+        width: window.innerWidth,
+        height: window.innerHeight,
+
+    })
+    var layer = new Konva.Layer();
+    var out = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 250,
+        stroke: '#CE6700',
+        strokeWidth: 4,
+        dash: [12, 12]
+    })
+    var inner = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 150,
+        stroke: '#B34A7E',
+        strokeWidth: 4,
+        dash: [12, 12]
+    })
+    var center = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 80,
+        fill: 'indigo',
+        stroke: '#ccc',
+        strokeWidth: 30,
+        opacity: .7
+    })
+   var quan1 = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 30,
+        fill: 'hotpink',
+        stroke: '#0F4359',
+        strokeWidth: 10,
+        opacity: .7,
+        offset: {
+            x: 0,
+            y: 200,
+        }
+    })
+  var  quan2 = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 30,
+        fill: 'cornflowerblue',
+        stroke: '#44C522',
+        strokeWidth: 10,
+        opacity: .7,
+        offset: {
+            x: 0,
+            y: -145
+        }
+    })
+   
+   var  quan3 = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 40,
+        fill: 'darkorange',
+        stroke: 'red',
+        strokeWidth: 10,
+        opacity: .7,
+        offset: {
+            x: 0,
+            y: 250
+        }
+    })
+    layer.add(out);
+    layer.add(inner);
+    layer.add(center);
+    layer.add(quan1);
+    layer.add(quan2);
+    layer.add(quan3);
+    stage.add(layer);
+    var angularSpeed = 7;
+    var anim = new Konva.Animation(function() {
+        quan1.rotate(angularSpeed/2);
+        quan2.rotate(angularSpeed/3);
+        quan3.rotate(angularSpeed/4);
+    }, layer);
+    anim.start();
+
+     layer.on('mouseover', function() {
+            angularSpeed = 3;
+        });
+       layer.on('mouseout', function() {
+           angularSpeed=7;
+        })
+</script>
+</html>

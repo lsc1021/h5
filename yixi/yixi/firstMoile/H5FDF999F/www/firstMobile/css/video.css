@@ -1,0 +1,204 @@
+input {
+    outline: none;
+}
+
+.pdt40 {
+    padding: 40px 0px;
+}
+
+.sbw1240 {
+    background: white;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.clearfix {}
+
+section {
+    display: block;
+    clear: both;
+}
+
+.lecturesOverView {
+    width: 65%;
+    box-sizing: border-box;
+    border-left: 4px solid #cc3434;
+    padding-left: 1em;
+    font-size: 1.6em;
+    line-height: 1.8em;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+#youkuplayer {
+    height: 500px;
+}
+
+@media screen and (max-width: 768px) {
+    .lecturesOverView {
+        width: 100%;
+    }
+    .leftRow {
+        width: 100%;
+        float: none;
+    }
+    #youkuplayer {
+        height: 300px;
+    }
+}
+
+.leftRow {
+    width: 100%;
+    float: none;
+}
+
+.commentContent {
+    width: 100%;
+}
+
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.commentContent h3 {
+    display: block;
+    font-size: 1.5em;
+    line-height: 2em;
+}
+
+.baseCommentInput {
+    width: 100%;
+    height: 40px;
+    padding-left: 1em;
+    font-size: 1.4em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #ededed;
+    background-color: #fff;
+    color: #999;
+    box-sizing: border-box;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.baseCommentListBox {
+    width: 100%;
+    padding: 15px 0px 15px 23px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.baseCommentListBox .commentHeadBox {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 0px;
+    top: 25px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 2px #999;
+    overflow: hidden;
+}
+
+.baseCommentListBox .wordBox {
+    border: 1px solid #ededed;
+    background-color: #f8f8f8;
+    display: inline-block;
+    padding: 5px 0px 5px 40px;
+    margin-left: 50px;
+}
+
+.baseCommentListBox .commentHeadBox img {
+    width: 100%;
+}
+
+.baseCommentListBox .wordBox .title {
+    color: #999;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    padding-right: 10px;
+}
+
+.baseCommentListBox .wordBox .title span {
+    padding-right: 3px;
+}
+
+.baseCommentListBox .wordBox .commentDetail {
+    padding: 5px 10px 5px 0px;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    cursor: pointer;
+    position: relative;
+}
+
+.baseCommentListBox .wordBox .buttonNotShow {
+    display: none;
+}
+
+.buttonBox {
+    position: relative;
+}
+
+.baseCommentListBox .wordBox .buttonBox .commentInput {
+    height: 40px;
+    width: 70%;
+    display: inline-block;
+    padding-left: 1em;
+    font-size: 1.2em;
+    border: 1px solid #ededed;
+    background-color: #f8f8f8;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.container {
+    padding-bottom: 20px;
+}
+
+.container ul {
+    width: 300px;
+    height: 50px;
+    list-style: none;
+}
+
+.container ul li {
+    width: 15%;
+    height: 30px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+    background: #ccc;
+    margin-left: 3%;
+    color: white;
+    font-size: 1em;
+}
+
+.container ul li:hover {
+    background: #cc3434;
+}
+
+@media screen and (max-width: 768px) {
+    .container ul {
+        width: 100%;
+    }
+}
+
+.nonepl {
+    text-align: center;
+    height: 2em;
+    line-height: 5em;
+    font-size: 2em;
+    color: #ccc;
+}

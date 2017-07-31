@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+    var width = ctx.canvas.width;
+    var height = ctx.canvas.height;
+    var r = width / 2;
+    var rem = width / 200;
+    console.log(width, "===", height, "===", r)
+        // 时钟的外圆
+    function out(){
+        ctx.save();
+        ctx.translate(r, r);
+        ctx.beginPath();
+        // 宽度
+        ctx.lineWidth = 10 * rem;
+        // 画圆
+        ctx.arc(0, 0, r - ctx.lineWidth / 2, 0, 2 * Math.PI, false);
+         var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.5", "blue");
+         gradient.addColorStop("1.0", "red");
+            // 用渐变填色
+             ctx.fillStyle = gradient;
+        ctx.stroke();
+        var clockarr = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+        ctx.font = 10 * rem + "px Aeial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        clockarr.forEach(function(n,i){
+            var rad = 2 * Math.PI / 12 * i;
+            var x = Math.cos(rad) * (r - 30 * rem);
+            var y = Math.sin(rad) * (r - 30 * rem);
+            ctx.fillText(n, x, y);
+        });
+         for (var i = 0; i < 60; i++) {
+            var rad = 2 * Math.PI / 60 * i;
+            var x = Math.cos(rad) * (r - 18 * rem);
+            var y = Math.sin(rad) * (r - 18 * rem);
+            ctx.beginPath();
+            if (i % 5 === 0) {
+                ctx.fillStyle = "#000"
+                ctx.arc(x, y, 2 * rem, 0, 2 * Math.PI, false);
+            } else {
+                ctx.fillStyle = "#ccc"
+                ctx.arc(x, y, 2 * rem, 0, 2 * Math.PI, false);
+            }
+            ctx.fill();
+        }
+    }
+    //时针
+     function drawHour(hour, minute) {
+        ctx.save()
+        ctx.beginPath();
+        var rad = 2 * Math.PI / 12 * hour;
+        var mrad = 2 * Math.PI / 12 / 60 * minute;
+        ctx.rotate(rad + mrad);
+        ctx.lineWidth = 6;
+        ctx.lineCap = "round";
+        ctx.moveTo(0, 10 * rem);
+        ctx.lineTo(0, -r / 2);
+        ctx.stroke();
+        ctx.restore()
+    }
+    //分针
+    function drawMinute(minute) {
+        ctx.save()
+        ctx.beginPath();
+        var rad = 2 * Math.PI / 60 * minute;
+        ctx.rotate(rad);
+        ctx.lineWidth = 3;
+        ctx.lineCap = "round";
+        ctx.moveTo(0, 10 * rem);
+        ctx.lineTo(0, -r + 30 * rem);
+        ctx.stroke();
+        ctx.restore()
+    }
+    //秒针
+     function drawSecond(second) {
+        ctx.save()
+        ctx.beginPath();
+        var rad = 2 * Math.PI / 60 * second;
+        ctx.rotate(rad);
+        ctx.fillStyle = "red";
+        ctx.moveTo(-2, 20 * rem);
+        ctx.lineTo(2, 20 * rem);
+        ctx.lineTo(1, -r + 18 * rem);
+        ctx.lineTo(-1, -r + 18 * rem);
+        ctx.fill();
+        ctx.restore()
+    }
+    //原点
+     function drawDot() {
+        ctx.beginPath();
+        ctx.fillStyle = "gold";
+        ctx.arc(0, 0, 3 * rem, 0, 2 * Math.PI, false);
+        ctx.fill();
+    }
+    //输入当前时间并调用绘画
+     function draw() {
+        ctx.clearRect(0, 0, width, height);
+        var now = new Date();
+        var hour = now.getHours();
+        var ninute = now.getMinutes();
+        var second = now.getSeconds();
+        out();
+        drawHour(hour, ninute)
+        drawMinute(ninute)
+        drawSecond(second);
+        drawDot();
+        ctx.restore();
+    }
+     draw();
+     setInterval(draw, 1000);
+</script>
+</html>

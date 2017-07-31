@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{margin: 0;padding: 0}
+    .an-lable{width: 260px;
+    height: 270px;
+    background: url("img/back.png") no-repeat -220px -526px;
+    position: absolute;
+    left: 30px;
+    top: 90px;
+    /*border:2px solid black ;*/
+    animation: up 1s linear 27s 5 alternate;
+    opacity: 0;
+    }
+    @-webkit-keyframes up{
+        from{top:90px;opacity: 1}
+        to{top:70px;opacity: 0}
+    }
+    .an-fire{
+        width: 240px;
+        height:250px;
+        background: url("img/back.png") no-repeat -238px 30px;
+        position: absolute;
+        left: 400px;
+        top: 90px;
+        /*border:2px solid black ;*/
+        animation: fire 0.4s linear 31s infinite alternate;
+        opacity: 0;
+    }
+    @-webkit-keyframes fire{
+        from{transform: translateX(0px) translateY(0px)
+        }
+        to{transform: translateX(10px) translateY(10px); opacity: 1}
+    }
+     .fire1{
+        width:209px;height: 234px;
+        background: url("img/back.png") no-repeat -238px -266px;
+        /*border:2px solid black ;*/
+        position: absolute;
+        left: 640px;
+        top: -240px;
+        animation: fire1 0.5s linear 31s infinite;
+        opacity: 0;
+       
+    }
+      @-webkit-keyframes fire1{
+        from{transform: translateX(0px) translateY(0px) }
+        to{ transform: translateY(500px) translateX(-500px); opacity: 1}
+    }
+     .fire2{
+        width:209px;height: 234px;
+        background: url("img/back.png") no-repeat -238px -266px;
+        /*border:2px solid black ;*/
+        position: absolute;
+        left:660px;
+        top:-100px;
+        animation: fire2 0.7s linear 31s infinite;
+        opacity: 0;
+    }
+      @-webkit-keyframes fire2{
+       from{transform: translateX(0px) translateY(0px) }
+        to{   transform: translateY(500px) translateX(-450px); opacity: 1}
+    }
+
+     #box-1{
+        	width: 400px;
+            height: 400px;
+        	position: absolute;
+            left: -400px;
+            transform: rotateY(-45deg);
+            animation: box1 10s linear 0s 1;
+            animation-fill-mode : forwards;
+        }
+        @-webkit-keyframes box1{
+        	0%{
+        		left: -400px;
+        		transform: rotateY(-45deg) scale(2);
+        		opacity: 0.5;
+        	}
+        	20%{
+        		left: 0px;
+        		transform: rotateY(0deg) scale(1);
+        		opacity: 0.8;
+        	}
+        	60%{
+        		left: 0px;
+        		transform: rotateY(0deg) ;
+        		opacity: 1;
+        	}
+        	100%{
+        		left: 0px;
+        		transform: rotateY(0deg);
+        		opacity: 0;
+        	}
+        }
+        .piaoye {
+            width: 90px;
+            height: 65px;
+            background: url(img/back.png) no-repeat 0px -150px;
+            position: absolute;
+            animation: piaoye 4s linear 2s 2;
+            
+        }
+        @-webkit-keyframes piaoye{
+        	0%{
+        		left: 10px;
+        		top: 10px;
+        		opacity: 0.2;
+        	}
+        	20%{
+        		left: 100px;
+        		top: 80px;
+        		opacity: 0.8;
+        	}
+        	50%{
+        		left: 10px;
+        		top: 120px;
+        		opacity: 1;
+        	}
+        	100%{
+        		left: 200px;
+        		top: 250px;
+        	}
+        }
+        .shuye{
+        	width: 240px;
+        	height: 150px;
+        	background: url(img/back.png) no-repeat 0px 0px;
+        	position: absolute;
+        	left: 100px;
+        	top: 100px;
+        }
+
+
+#box-2{
+       	    width: 400px;
+            height: 400px;
+        	position: absolute;
+        	top:-400px;
+        	transform: rotateX(90deg);
+        	animation: box2 10s linear 9s 1;
+        }
+         @-webkit-keyframes box2{
+        	0%{
+        		top:-400px;
+        		transform: rotateX(90deg) scale(2);
+        		opacity: 0.5;
+        	}
+        	20%{
+        		top: 0px;
+        		transform: rotateX(0deg) scale(1);
+        		opacity: 0.8;
+        	}
+        	60%{
+        		top: 0px;
+        		transform: rotateX(0deg) scale(1);
+        		opacity: 1;
+        	}
+        	100%{
+        		top: 0px;
+        		transform: rotateX(0deg) scale(1);
+        		opacity: 0;
+        	}
+        }
+        .zheng{
+        	width: 100px;
+        	height: 100px;
+        	position: absolute;
+        	background: url(img/back.png) no-repeat 2px -215px;
+        	left: 200px;
+        	top: 200px;
+        	z-index: 3;
+        	animation: box2zhuan 4s linear 11s 1;
+        }
+        .sanjiao{
+        	width: 170px;
+        	height: 168px;
+        	background: url(img/back.png) no-repeat 2px -315px;
+        	position: absolute;
+        	top: 130px;
+        	left: 70px;
+        	z-index: 2;
+        	animation: box2zhuan 4s linear 13s 1;
+        }
+        .yuan{
+        	width: 137px;
+        	height: 137px;
+        	background: url(img/back.png) no-repeat 0px -482px;
+        	position: absolute;
+        	top: 150px;
+        	left: 150px;
+        	animation: box2zhuan 4s linear 15s 1;
+        }
+        @-webkit-keyframes box2zhuan{
+        	0%{
+        		transform: rotate(0deg);
+        	}
+        	20%{transform: rotate(360deg)}
+        	30%{transform: rotate(0deg)}
+        	40%{transform: rotate(0deg)}
+        	80%{transform: rotate(360deg)}
+        	90%{transform: rotate(0deg)}
+        	100%{transform: rotate(0deg)}
+        }
+
+         #box-3{
+        	width: 400px;
+            height: 400px;
+        	position: absolute;
+            transform: rotateY(-45deg);
+            animation: box3 10s linear 18s 1;
+            opacity: 0;
+        }
+         @-webkit-keyframes box3{
+        	0%{
+        		transform: rotateY(-45deg) scale(2);
+        		opacity: 0.5;
+        	}
+        	20%{
+        		
+        		transform: rotateY(0deg) scale(1);
+        		opacity: 0.8;
+        	}
+        	60%{
+        		
+        		transform: rotateY(0deg) ;
+        		opacity: 1;
+        	}
+        	100%{
+        		
+        		transform: rotateY(0deg);
+        		opacity: 0;
+        	}
+        }
+        .deng{
+        	width: 200px;
+        	height: 268px;
+        	background: url(img/back.png) no-repeat 2px -620px;
+        	position: absolute;
+        	left: 105px;
+        	top: 65px;
+        	-webkit-box-reflect: below 3px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5));
+        }
+        .guang{
+        	width: 350px;
+        	height: 270px;
+        	background: url(img/back.png) no-repeat 2px -888px;
+        	position: absolute;
+        	top: 10px;
+        	left: 25px;
+        	animation: guang 1s linear 20s infinite alternate forwards;
+        }
+        @-webkit-keyframes guang{
+        	0%{opacity: 0;}
+        	100%{opacity: 1;}
+        }
+
+</style>
+<body>
+    <div class="an-lable"></div>
+    <div class="an-fire"></div>
+    <div class="fire1"></div>
+    <div class="fire2"></div>
+
+    <div class="box" id="box-1">
+	<div class="piaoye"></div>
+	<div class="shuye"></div>
+	 </div>
+    <div id="box-2">
+	<div class="sanjiao"></div><div class="yuan"></div><div class="zheng"></div>
+	</div>
+    <div id="box-3">
+    <div class="deng"></div><div class="guang"></div>
+	 </div>
+
+</body>
+</html>

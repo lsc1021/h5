@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bx {
+            width: 800px;
+            height: 200px;
+            position: relative;
+            top: 150px;
+            left: 250px;
+            border: 2px solid black;
+            box-shadow: 10px 10px 10pc 2px black inset;
+        }
+        
+        .bor {
+            width: 180px;
+            height: 180px;
+            position: absolute;
+            border-radius: 50%;
+        }
+        
+        .bor:nth-child(2) {
+            left: 50px;
+            border: 10px solid;
+            border-color: white white white yellow;
+            transform: rotate(0deg);
+            transition: all 1s ease 0s;
+        }
+        
+        .bor:nth-child(4) {
+            left: 300px;
+            border: 10px solid;
+            border-color: yellow white white white;
+            transform: rotate(0deg);
+            transition: all 1s ease 0s;
+        }
+        
+        .bor:nth-child(6) {
+            left: 550px;
+            border: 10px solid;
+            border-color: white yellow white white;
+            transform: rotate(0deg);
+            transition: all 1s ease 0s;
+        }
+        
+        .box {
+            width: 150px;
+            height: 150px;
+            background: #03A9F4;
+            position: absolute;
+            z-index: 2;
+            border-radius: 50%;
+        }
+        
+        .box:nth-child(1) {
+            left: 75px;
+            top: 25px;
+        }
+        
+        .box:nth-child(1):hover{
+            background: #9E9E9E;
+        }
+        .box:nth-child(3) {
+            left: 325px;
+            top: 25px;
+        }
+        .box:nth-child(3):hover{
+            background:  #9C27B0;
+        }
+        .box:nth-child(5) {
+            left: 575px;
+            top: 25px;
+        }
+        .box:nth-child(5):hover{
+            background: #8BC34A;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bx">
+        <div class="box"></div>
+        <div class="bor"></div>
+        <div class="box"></div>
+        <div class="bor"></div>
+        <div class="box"></div>
+        <div class="bor" id="bor3"></div>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+   var bor = document.getElementsByClassName("bor");
+    var box = document.getElementsByClassName("box");
+    	$.each(box, function(index,value) {
+    		box[index].onmouseover=function(){
+    			bor[index].style.transform="rotate(3600deg)";
+    		}
+    		box[index].onmouseout=function(){
+    			bor[index].style.transform="rotate(0deg)";
+    		}
+    	});
+
+</script>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/icon.png">
+    <title>闪灵查询助手</title>
+    <link rel="stylesheet" href="https://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type="text/javascript" src="js/zepto.fx.touch.js"></script>
+    <script src="js/style.js"></script>
+    <script src="js/kuaidi.js"></script>
+    <link rel="stylesheet" href="css/media.css">
+</head>
+<style>
+    body {
+        max-width: 1000px;
+        min-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+    }
+    
+    .card-content-inner {
+        padding: .2rem;
+    }
+    
+    .card-content {
+        margin-top: .5rem;
+        border-radius: 15px;
+        background-color: rgba(0, 150, 136, 0.41);
+    }
+    
+    .err {
+        color: blue;
+        border-radius: 15px;
+        background-color: #FF9800;
+    }
+    
+    .title {
+        font-size: 1rem;
+        background-color: #8BC34A;
+        color: #3F51B5;
+    }
+</style>
+
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-left pull-left" onclick="GoBack()"></a>
+                <a class="icon icon-refresh pull-right" onclick="GoInit()"></a>
+                <h1 class="title">闪灵快递</h1>
+            </header>
+            <!--输入-->
+            <div class="content">
+                <div class="list-block">
+                    <ul>
+                        <!-- Text inputs -->
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label">公司名称</div>
+                                    <div class="item-input ">
+                                        <select id="gongsi" size="1">
+		    	                        <option value="">顺丰速运</option>
+		    	                        <option value="">申通快递</option>
+		    	                        <option value="">圆通快递</option>
+		    	                        <option value="">韵达快递</option>
+		    	                        <option value="">天天快递</option>
+		    	                        <option value="">百世快递</option>
+		    	                        <option value="">德邦</option>
+		    	                        <option value="">中通快递</option>
+		    	                        <option value="">1号仓</option>
+		    	                        <option value="">优速快递</option>
+		    	                        <option value="">EMS快递查询</option>
+		    	                        <option value="">EMS国际快递查询</option>
+		    	                        <option value="">邮政国内</option>
+		    	                        <option value="">邮政国际</option>
+		                                </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title label ">快递单号</div>
+                                    <div class="item-input">
+                                        <input class="danhao" type="email" placeholder="请输入快递单号">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <p><a href="#" class="button button-big button-round">查询</a></p>
+                </div>
+
+
+
+                <div class="card" id="xiangxi">
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js" charset="utf-8"></script>
+<script type="text/template" id="tem">
+    <div class="card-content">
+        <div class="card-content-inner">
+            <%= time %>
+        </div>
+        <div class="card-content-inner">
+            <%= context %>
+        </div>
+    </div>
+
+</script>
+<script>
+    var temp = $("#tem").html();
+    var zhuan = _.template(temp);
+    $(".button-round").click(function() {
+        $("#xiangxi").html("");
+        var num = $(".danhao").val();
+        // 获取选中公司内容
+        var zhi = $('option').not(function() {
+            return !this.selected
+        });
+        var nam = zhi.selector[0].innerHTML;
+        $.each(kuaidis, function(i, v) {
+            if (nam == i) {
+                nam = v;
+            }
+        })
+        $.ajax({
+            type: "get",
+            url: "php/kuaidi.php",
+            data: {
+                nam: nam,
+                num: num,
+            },
+            dataType: "json",
+            success: function(data) {
+                if (data.message == "ok") {
+                    $.each(data.data, function(i, v) {
+                        var result = zhuan(v);
+                        $("#xiangxi").append(result);
+                    })
+
+                } else {
+                    var err = '<div class="card-content"><div class="card-content-inner err">' + data.message + '</div></div>'
+                    $("#xiangxi").html(err);
+                }
+            },
+            error: function(res) {
+                console.log(res);
+            }
+        })
+
+    })
+</script>
+
+</html>

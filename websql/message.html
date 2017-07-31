@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" manifest="message.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin: 0;padding: 0;font-family: "楷体"}
+    .bigbox{
+        width: 1366px;
+        height: 640px;
+        background: url("http://pic1.win4000.com/wallpaper/2/5880897253620.jpg") no-repeat;
+        background-size: 100% 100%;
+    }
+   .iput{margin-top: 30px;
+      padding-left: 20px;
+       margin-left: 20px;
+       width: 250px;
+       height: 100px;
+       background-color:#2196F3;
+       border-radius: 6%;
+   }
+   .iput p,.txt p{width: 300px;height: 30px;
+   font-size: 25px;
+  }
+  .iput input{width: 200px;
+  height: 40px;font-size: 25px}
+  .txt{ margin-left: 20px;
+      margin-top: 30px;
+      width: 250px;height: 300px;
+      background-color: #2196F3;
+      padding-left: 20px;
+       border-radius: 6%;
+  }
+  .txt textarea{width: 200px;height: 200px;resize: none;font-size: 20px;
+  }
+  .txt input{width: 100px;height: 30px;margin-top: 10px;font-weight: bold;font-size: 20px;
+  background-color:#00BCD4;}
+  .show{width: 750px;
+  height: 550px;
+  background-color:rgba(158, 158, 158, 0.68);position: absolute;
+  left: 500px;top: 50px;overflow:auto;}
+  .show-p{font-size: 30px}
+  /*.messshow{width: 100px;
+  height: 100px;background-color:yellow;}*/
+  .show-sm{margin-top: 10px;
+     margin-left: 15px;
+      width: 680px;
+      height: 70px;
+      background-color: yellow;
+  }
+  .usercontent{margin:0 auto;
+    width: 700px;
+    word-break:break-all;
+    background-color:rgba(96, 125, 139, 0.73);
+    margin-top: 10px;
+  }
+  .username{font-size: 20px;float: left;}
+  .usertime{float:right;width: 160px;height: 20px;}
+  .update{width: 400px;height: 250px;background-color:#2196F3;position: fixed;
+  left:20px;top: 20px;display:none;}
+  .update textarea{width: 100%;height: 200px;font-size: 20px;resize: none;}
+  .update button{margin-top:10px;}
+    </style>
+</head>
+<body>
+    <div class="bigbox" >
+        <div style="height:10px"></div>
+    <div class="user iput">
+        <p>用户名</p>
+        <input class="usermain" type="text">
+    </div>
+    <div class="title iput" >
+        <p>标题</p>
+        <input class="titlemain" type="text" readonly placeholder="该功能修复中...">
+    </div>
+    <div class="txt">
+        <p>留言内容</p>
+        <textarea class="txtmain"></textarea>
+        <p><input class="btn" type="button" value="提交留言"></p>
+    </div>
+    <div class="show">
+        <p  class="show-p">留言展示:</p>
+        <div class="messshow">
+        </div>
+    </div>
+   </div>
+   <div class="update">
+     <textarea class="newmain"></textarea>
+     <button type="button" name="button" onclick="update()">确认更改</button>
+     <button type="button" name="button" onclick="updatehidden()">取消更改</button>
+     <input type="text" id="hiddentxt" style="display:none"></input>
+   </div>
+   <audio src="lol.mp3"autoplay=""loop="">
+
+   </audio>
+</body>
+<script type="text/template" id="moban">
+
+  <div class="usercontent">
+  <p class="username"><%= user %></p>
+  <p class="usertime"><%= time %></p>
+  <p style="clear:both"></p>
+    <%= content %>
+  </br><button type="button" name="button" onclick="updateshow(<%= id %>)">编辑</button>
+    <button type="button" name="button" onclick="delect(<%= id %>)">删除</button>
+  </div>
+
+</script>
+<script src="http://zc991.cn/js/jquery.js"></script>
+ <script src="underscore-min.js"></script>
+<script>
+   var btn=document.querySelector(".btn");
+
+     //创建数据库
+    var db=openDatabase("mydb","1.0","message",2*1024*1024);
+    //初始化数据库
+    // db.transaction(function(tx){
+    //     tx.executeSql('DROP TABLE logs');
+    // });
+    //创建数据库
+    db.transaction(function(tx){
+        tx.executeSql('CREATE TABLE IF NOT EXISTS myform (id INTEGER PRIMARY KEY ASC,user,title,content,time)');
+    });
+    //初始化页面
+      select();
+    //获取需要保存的页面信息
+    var usermain=document.querySelector(".usermain");
+    var txtmain=document.querySelector(".txtmain");
+    usermain.addEventListener("keyup",function () {
+      localStorage.usermain=usermain.value;
+    })
+    txtmain.addEventListener("keyup",function () {
+      localStorage.txtmain=txtmain.value;
+    })
+    usermain.value = localStorage.usermain;
+    txtmain.value = localStorage.txtmain;
+    //插入数据
+    btn.onclick=function(){
+        var use=usermain.value;
+        var contentr=txtmain.value;
+        db.transaction(function(tx){
+         tx.executeSql('INSERT INTO myform (user,content,time) VALUES (?,?,DAtetime("now","localtime"))',[use+":",contentr],onSuccess, onError)
+         })
+
+    }
+    //提交成功函数
+    function onSuccess(tx, res) {
+        alert("操作成功")
+        $(".messshow").children().remove();//成功后移除子元素
+        select();//更新dom
+        $(".update").hide();
+    }
+    //提交失败
+    function onError(tx, res) {
+        alert('操作失败' +res.message);
+    }
+
+    //查询数据
+    function select(){
+   db.transaction(function(tx){
+       tx.executeSql('select * from myform order by id desc',[],function(tx,result){
+           var len=result.rows.length;
+           var str = document.querySelector("#moban").innerHTML;
+		    var plateStr = _.template(str);
+           for(var i=0;i<len;i++){
+            var vl=result.rows.item(i);
+            // console.log(vl);
+            var objStr = plateStr(vl);
+            $(".messshow").append(objStr);
+           }
+       })
+   })
+    }
+
+    //删除函数
+    function delect(num){
+         db.transaction(function(tx){
+            tx.executeSql("delete from myform where id=?",[num],onSuccess,onError);
+        })
+    }
+    //弹出隐藏框
+
+
+    function updateshow(num){
+      $(".update").show();
+      db.transaction(function (tx) {
+        tx.executeSql("select * from myform where id=?",[num],function(tx,res){
+          // console.log(res.rows.item(0));
+          $(".newmain").val(res.rows.item(0).content);
+          $("#hiddentxt").val(num);
+        })
+      })
+
+    }
+    //更新函数
+      function update(){
+          var newmain=$(".newmain").val();
+          var num=$("#hiddentxt").val();
+          console.log(newmain);
+          console.log(num);
+          db.transaction(function (tx) {
+            tx.executeSql("update myform set content=? where id= ?",[newmain,num],onSuccess,onError)
+          })
+      }
+      //取消更改
+      function updatehidden() {
+        $(".update").hide();
+      }
+</script>
+
+</html>

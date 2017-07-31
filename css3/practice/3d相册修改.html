@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			body {
+				background: #000;
+			}
+			
+			#photos {
+				width: 110px;
+				/*宽度*/
+				height: 180px;
+				/*高度*/
+				margin: 160px auto;
+				/*水平居中，高度距离顶部100px*/
+				transform-style: preserve-3d;
+				/*设置3d环境*/
+				transform: rotateX(-10deg);
+				transition: all 1s ease 0s;
+			}
+			
+			#photos img {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				box-shadow: 0 0 8px #eaeaea;
+				box-shadow: 1px -1px 6px #666;
+				border-radius: 4px;
+				-webkit-box-reflect: below 3px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.5));
+				cursor: pointer;
+				
+			}
+			
+			#photos div {
+				width: 1200px;
+				height: 1200px;
+				border-radius: 50%;
+				position: absolute;
+				top: 102%;
+				left: 50%;
+				margin-left: -600px;
+				margin-top: -600px;
+				transform: rotateX(90deg);
+				background:-webkit-radial-gradient(center center, 600px 600px, rgba(158, 158, 222, 0.5), rgba(0, 0, 0, 0));
+			}
+			#zheng {
+				perspective: 800px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="zheng">
+			<div id="photos">
+				<img src="img/1.jpg" />
+				<img src="img/2.jpg" />
+				<img src="img/3.jpg" />
+				<img src="img/4.jpg" />
+				<img src="img/5.jpg" />
+				<img src="img/6.jpg" />
+				<img src="img/7.jpg" />
+				<img src="img/8.jpg" />
+				<div></div>
+			</div>
+		</div>
+	</body>
+	<script src="jquery.js"></script>
+	<script src="jq.mousewheel.js"></script>
+	<script type="text/javascript">
+		var photosDom = document.getElementById('photos');//获取图片数组
+		var images = photosDom.getElementsByTagName('img');//获取图片数量
+		var len = images.length;//计算每张图片按Y轴旋转的角度 
+		var deg = Math.floor(360 / len);
+		for(var i = 0; i < len; i++) {
+			images[i].style = 'transform : rotateY(' + deg * i + 'deg) translateZ(380px)'; //deg前面不要加空格
+		}
+		 var nowRotateX = 0;
+        var nowRotateY = 0;
+		 $(document).mousedown(function(ev) {
+			var startX = ev.clientX;
+            var  startY = ev.clientY;
+			  $(document).mousemove(function(ev) {
+			   var deltaX = ev.clientX - startX;
+                var deltaY = ev.clientY - startY;
+				 nowRotateX += -deltaY / 200;
+                 nowRotateY += deltaX / 200;
+			photosDom.style.transform= "rotateX(" + nowRotateX + "deg) rotateY(" + nowRotateY + "deg)";
+			  return false;
+			  })
+		 })
+		   $(document).mouseup(function() {
+            $(document).off('mousemove');
+        })
+
+	var degree = 0;
+    var lock = true;
+	var $actor = $("#photos");
+    $("#zheng").mousewheel(function(ev, delta) {
+        // 函数节流
+        if (!lock) return;
+        degree -= delta * 45;
+       $actor.css('transform', 'rotateY(' + degree + 'deg)')
+            // console.log(delta)
+        lock = false;
+        setTimeout(function() {
+            lock = true;
+        }, 1000)
+
+    })
+	</script>
+
+</html>

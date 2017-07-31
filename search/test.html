@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="img/icon.png">
+    <title>闪灵查询助手</title>
+    <link rel="stylesheet" href="https://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="css/media.css">
+    <script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type="text/javascript" src="js/zepto.fx.touch.js"></script>
+    <script type="text/javascript" src="js/style.js"></script>
+</head>
+<style>
+    body {
+        max-width: 1000px;
+        min-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+    }
+    
+    .title {
+        font-size: 1rem;
+        background-color: #FFEB3B;
+        color: #b43fb5;
+    }
+    
+    .haha {
+        font-size: 1rem;
+        color: blue;
+    }
+    
+    .card-content {
+        color: #ccc;
+        margin-top: .5rem;
+        font-size: .8rem;
+        border-radius: 15px;
+        background-color: #607D8B;
+    }
+    
+    .err {
+        color: yellow;
+    }
+    
+    .success {
+        color: #4cd964;
+    }
+</style>
+
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-left pull-left" onclick="GoBack()"></a>
+                <a class="icon icon-refresh pull-right" onclick="GoInit()"></a>
+                <h1 class="title">闪灵嗨皮</h1>
+            </header>
+            <!--title-->
+            <div class="bar bar-header-secondary">
+                <div class="searchbar">
+                    <a class="searchbar-cancel" class="sou">搜索</a>
+                    <div class="search-input">
+                        <label class="icon icon-search" for="search"></label>
+                        <input class="zhi" type="search" id='search' placeholder='输入关键字...' />
+                    </div>
+                </div>
+            </div>
+            <!--内容-->
+            <div class="content">
+                <div class="card" id="xiangxi">
+                    <div class="haha">
+                        轻松一刻
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js" charset="utf-8"></script>
+<script type="text/template" id="tem">
+    <div class="card-content">
+        <div class="card-content-inner">
+            <%= text %>
+        </div>
+    </div>
+
+</script>
+<script>
+    var temp = $("#tem").html();
+    var zhuan = _.template(temp);
+    $.ajax({
+        type: "get",
+        url: "http://is.snssdk.com/neihan/stream/mix/v1/?mpic=1&webp=1&essence=1&content_type=-102",
+        dataType: 'jsonp',
+        jsonpCallback: 'stark',
+        success: function(data) {
+            $.each(data.data.data, function(i, v) {
+                var result = zhuan(v.group);
+                $("#xiangxi").append(result);
+            })
+        }
+    })
+    $(".zhi").blur(function() {
+        $("#xiangxi").html("");
+        var txt = $(".zhi").val();
+        $.ajax({
+            type: "get",
+            url: "http://baike.baidu.com/api/openapi/BaikeLemmaCardApi?scope=103&format=json&appid=379020&bk_key=" + txt,
+            dataType: 'jsonp',
+            jsonpCallback: 'king',
+            success: function(data) {
+                if (data.abstract) {
+                    var html = '<div class ="card-content"><div class="card-content-inner success">' + data.abstract + '</div> </div>'
+                } else {
+                    var html = '<div class ="card-content"><div class="card-content-inner err">你搜索的词太高大上了，都找不到了呢</div> </div>'
+                }
+                $("#xiangxi").html(html);
+                console.log(data);
+                console.log(data.abstract);
+            }
+        })
+    })
+</script>
+
+</html>

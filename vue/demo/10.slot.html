@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <aaa>
+            <ul slot="ul-slot">
+                <li>ul</li>
+                <li>33</li>
+                <li>44</li>
+                <li>替换默认情况的位置</li>
+            </ul>
+        </aaa>
+        <hr>
+        <aaa>
+        </aaa>
+    </div>
+
+
+    <template id="aaa">
+        <h1>slot开始</span>
+        <slot name="ul-slot">
+                ul-slot 位置
+        </slot>
+    </template>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                a: 'aaa'
+            },
+            components: {
+                'Aaa': {
+                    template: '#aaa'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>实现两个页面同步改变</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="css/style.css" rel="stylesheet">-->
+</head>
+
+<body>
+    <input type="checkbox" name="" value="热风扇">热风扇
+    <input type="checkbox" name="" value="空调">空调
+    <input type="checkbox" name="" value="巧乐兹">巧乐兹
+    <input type="checkbox" name="" value="冰工厂">冰工厂
+    <input type="checkbox" name="" value="冰箱">冰箱
+
+</body>
+<script>
+    var input = document.getElementsByTagName("input");
+    for (var i = 0; i < input.length; i++) {
+        input[i].onclick = function() {
+            if (this.checked) {
+                localStorage.value= this.value;
+            } else {
+                 localStorage.svalue= this.value;
+            }
+        }
+    }
+
+    window.addEventListener('storage', function(ev) {
+        // console.log(ev);
+        if (ev.key=="value") {
+            for(var i=0;i<input.length;i++){
+        if (ev.newValue==input[i].value) {
+            input[i].checked=true;
+        }    
+            }
+            
+        } else if(ev.key=="svalue"){
+            for (var i = 0; i < input.length; i++) {
+                if (ev.newValue==input[i].value) {
+                    input[i].checked=false;
+                }
+
+            }
+        }
+
+    })
+</script>
+
+</html>

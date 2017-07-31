@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" href="img/1.png">
+    <link rel="stylesheet" href="https://g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <script type='text/javascript' src='https://g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='https://g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type="text/javascript" src="zepto.fx.touch.js"></script>
+</head>
+<style>
+    .title{background-color: #9E9E9E;}
+    /*.list-block{background-color: blue;}*/
+    .item-title{margin: 0 auto;width: 300px;height: 449px;}
+    .item-content{background-color: #9E9E9E;border-radius: 6px;}
+</style>
+<body>
+    <!--第一层div-->
+     <div class="page-group">
+         <!--第二层div-->
+        <div class="page page-current">
+            <!--title-->
+            <header class="bar bar-nav">
+          <h1 class="title">豆瓣热映影片展示</h1>
+            </header>
+            <!--滚动加载区域-->
+            <div class="content infinite-scroll infinite-scroll-bottom"  data-distance="50">
+                <!--加载内容-->
+                 <div class="list-block">
+              <ul class="list-container">
+                  
+              </ul>
+          </div>
+            
+<!--加载提示符-->
+          <div class="infinite-scroll-preloader">
+              <div class="preloader"></div>
+          </div>
+        </div> 
+     </div> 
+ </div>  
+<!---->
+    
+</body>
+<script>
+     // 加载flag
+      var loading = false;
+      // 最多可加载的条目
+      var maxItems = 50;
+
+      // 每次加载添加多少条目
+      var itemsPerLoad =10;
+      var page=1;
+      function addItems(number, lastIndex) {
+        // 生成新条目的HTML
+        var html = '';
+        $.ajax({
+        type:"post",
+    	url: 'https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=西安&start='+page+'&count=10&client=&udid=',
+    	dataType: 'jsonp',
+    	data:{page:page},
+    	jsonpCallback :'stark',
+    	success : function(data){
+            console.log(data)
+        $.each(data.subjects,function(index,val){
+            html += '<li class="item-content"><div class="item-inner"><div class="item-title"><a href="'+val.alt+'"><img src="'+ val.images.large +'"></a></div></div></li>';
+        })
+         // 添加新条目
+         $('.infinite-scroll-bottom .list-container').append(html);
+        }
+        })
+          }
+          //预先加载10条
+      addItems(itemsPerLoad, 0);
+
+      // 上次加载的序号
+
+      var lastIndex = 10;
+
+      // 注册'infinite'事件处理函数
+      $(document).on('infinite', '.infinite-scroll-bottom',function() {
+
+          // 如果正在加载，则退出
+          if (loading) return;
+
+          // 设置flag
+          loading = true;
+
+          // 模拟1s的加载过程
+          setTimeout(function() {
+              // 重置加载flag
+              loading = false;
+            
+              if (lastIndex >= maxItems) {
+                  // 加载完毕，则注销无限加载事件，以防不必要的加载
+                  $.detachInfiniteScroll($('.infinite-scroll'));
+                  // 删除加载提示符
+                  $('.infinite-scroll-preloader').remove();
+                  return;
+              }
+              //加载下一页
+                page+=10; 
+              // 添加新条目
+              addItems(itemsPerLoad, lastIndex);
+              // 更新最后加载的序号
+              lastIndex = $('.list-container li').length;
+              //容器发生改变,如果是js滚动，需要刷新滚动
+              $.refreshScroller();
+          }, 1000);
+      });
+   $.init();
+</script>
+</html>
